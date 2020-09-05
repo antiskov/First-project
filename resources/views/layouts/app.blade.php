@@ -22,10 +22,11 @@
    
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light">
+        <a class="nav-link" href="{{ url('/') }}">Forum</a>
             @if (Route::has('login'))
                     @auth
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/home') }}">Profile</a>
                     @endauth
             @endif
             @guest

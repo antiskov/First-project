@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="navbar navbar-light bg-light">
-          @if (Route::has('login'))
-                    @auth
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-            @endif
-        </nav>
-      </body>
-</html>
+@section('content')
+<div class="container">
+    <h1>Welcome</h1>
+</div>
+@endsection
   
