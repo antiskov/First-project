@@ -4857,6 +4857,34 @@
             "time": "2020-07-13T06:12:54+00:00"
         },
         {
+            "name": "uikit/uikit",
+            "version": "v3.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uikit/uikit.git",
+                "reference": "b431b8b1f632ff3bb2d98c50c3e4ec52ad2043a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uikit/uikit/zipball/b431b8b1f632ff3bb2d98c50c3e4ec52ad2043a8",
+                "reference": "b431b8b1f632ff3bb2d98c50c3e4ec52ad2043a8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "UIkit is a lightweight and modular front-end framework for developing fast and powerful web interfaces.",
+            "homepage": "https://getuikit.com/",
+            "time": "2020-08-27T07:48:55+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v4.1.8",
             "source": {
