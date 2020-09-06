@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Topic;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/admin', function(){
 })->middleware('auth', 'is_admin');
 
 Route::get('/topic', function() {
+	dd(Topic::with('user')->first()->user->email);
 	return view('content.topic');
 })->middleware('auth')->name('topic');
 

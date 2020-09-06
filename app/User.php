@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    public function contents()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
