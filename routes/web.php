@@ -24,3 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', function(){
     return view('admin');
 })->middleware('auth', 'is_admin');
+
+Route::get('/topic', function() {
+	return view('content.topic');
+})->middleware('auth')->name('topic');
+
+Route::post('/add_topic', 'ContentController@addTopic')->name('add-topic');
