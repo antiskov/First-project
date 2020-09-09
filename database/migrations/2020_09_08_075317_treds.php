@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentsTable extends Migration
+class Treds extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('treds', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->string('topic');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('tred_item');
+            $table->bigInteger('content_id')->unsigned();
+            $table->foreign('content_id')->references('id')->on('contents');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('treds');
     }
 }

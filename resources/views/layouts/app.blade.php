@@ -30,7 +30,7 @@
                     @endauth
             @endif
             @guest
-               <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+               <a class="nav-link" href="{{ url('/login')  }}">{{ __('Login') }}</a>
                 @if (Route::has('register'))
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 @endif

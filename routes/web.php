@@ -14,9 +14,7 @@ use App\Topic;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@welcome');
 
 Auth::routes();
 
@@ -27,8 +25,15 @@ Route::get('/admin', function(){
 })->middleware('auth', 'is_admin');
 
 Route::get('/topic', function() {
-	dd(Topic::with('user')->first()->user->email);
 	return view('content.topic');
 })->middleware('auth')->name('topic');
 
 Route::post('/add_topic', 'ContentController@addTopic')->name('add-topic');
+
+Route::get('/', 'ContentController@allTopics');
+
+Route::get('/treds', 'WelcomeController@treds');
+
+Route::get('/new_tred', 'WelcomeController@newTred')->name('tred.create');
+
+Route::post('/add_tred', 'ContentController@addTred')->name('add-tred');
