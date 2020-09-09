@@ -14,4 +14,9 @@ class Topic extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    public function treds()
+    {
+    	return $this->hasMany(Tred::class, 'content_id', 'id');
+    }
 }

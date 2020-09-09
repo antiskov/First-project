@@ -8,6 +8,7 @@ use App\User;
 class Tred extends Model
 {
     public $fillable = ['tred_item'];
+    // protected $primaryKey = 'content_id';
 
     public function user()
     {

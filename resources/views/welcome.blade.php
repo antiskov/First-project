@@ -5,7 +5,7 @@
     <h3>Topics</h3>
     @foreach($data as $element)
     <div class="alert alert-info">
-        <p>{{ $element->topic }}</p>
+        <a href="{{route('treds', $element->id)}}">{{ $element->topic }}</a>
     </div>
     @endforeach
     @if (Route::has('login'))
