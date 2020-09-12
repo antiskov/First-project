@@ -5,7 +5,7 @@
     <h3>Treds</h3>
     @foreach($treds as $tred)
     <div class="alert alert-dark">
-        <p>{{ $tred->tred_item }}</p>
+        <a href="{{ route('commun') }}">{{ $tred->tred_item }}</a>
     </div>
     @endforeach
     @if (Route::has('login'))

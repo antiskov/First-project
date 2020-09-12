@@ -32,8 +32,10 @@ Route::post('/add_topic', 'ContentController@addTopic')->name('add-topic');
 
 Route::get('/', 'ContentController@allTopics');
 
-Route::get('/treds/{topic}', 'WelcomeController@treds')->name('treds');
+Route::get('/treds/{topic}', 'WelcomeController@tredsAction')->name('treds');
 
 Route::get('/new_tred', 'WelcomeController@newTred')->name('tred.create');
 
 Route::post('/add_tred', 'ContentController@addTred')->name('add-tred');
+
+Route::get('/commun', 'ContentController@commun')->name('commun');

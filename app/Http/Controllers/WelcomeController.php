@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     	return view('welcome');
     }
 
-    public function treds(Topic $topic)
+    public function tredsAction(Topic $topic)
     {   
 
         #$treds = $treds->only($id);
@@ -32,7 +32,6 @@ class WelcomeController extends Controller
         ->get();*/
 
         #$treds = $treds->intersect(Tred::whereln('content_id', $id))->get();
-
 
     	return view('content.treds', ['treds' => $topic->load('treds')->treds]);
     }

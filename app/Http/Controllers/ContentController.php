@@ -34,4 +34,9 @@ class ContentController extends Controller
 
     	return redirect()->back();
     }
+
+    public function commun()
+    {
+        return view('commun');
+    }
 }
