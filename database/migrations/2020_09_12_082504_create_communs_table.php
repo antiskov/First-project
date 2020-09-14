@@ -17,10 +17,13 @@ class CreateCommunsTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+
             $table->bigInteger('content_id')->unsigned();
             $table->foreign('content_id')->references('id')->on('contents');
+
             $table->bigInteger('tred_id')->unsigned();
             $table->foreign('tred_id')->references('id')->on('treds');
+            
             $table->string('commun_item');
             $table->timestamps();
         });

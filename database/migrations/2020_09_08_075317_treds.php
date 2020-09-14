@@ -17,9 +17,12 @@ class Treds extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+
             $table->string('tred_item');
+
             $table->bigInteger('content_id')->unsigned();
             $table->foreign('content_id')->references('id')->on('contents');
+            
             $table->timestamps();
         });
     }

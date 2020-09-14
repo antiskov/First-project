@@ -47,8 +47,13 @@ class User extends Authenticatable
         return $this->hasMany(Topic::class);
     }
 
-    public function contentsTred()
+    public function tred()
     {
         return $this->hasMany(Tred::class);
+    }
+
+    public function commun()
+    {
+        return $this->hasMany(Commun::class);
     }
 }

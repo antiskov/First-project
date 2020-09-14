@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tred extends Model
+class Commun extends Model
 {
-    public $fillable = ['tred_item'];
+    public $fillable = ['commun_item'];
 
     public function user()
     {
@@ -18,9 +18,8 @@ class Tred extends Model
     	return $this->belongsTo(Topic::class, 'content_id', 'id');
     }
 
-    public function commun()
+    public function tred()
     {
-        return $this->hasMany(Commun::class, 'tred_id', 'id');
+    	return $this->belongsTo(Tred::class);
     }
 }
-

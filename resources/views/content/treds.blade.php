@@ -10,7 +10,7 @@
     @endforeach
     @if (Route::has('login'))
       @auth
-        <a href="{{ route('tred.create') }}">Add tred</a>
+        <a href="{{ route('new-tred', $topicId) }}">New tred</a>
       @endauth
     @endif
 @endsection

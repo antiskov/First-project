@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
 
 class Topic extends Model
 {
     public $fillable = ['topic'];
     public $table = 'contents';
+    public $id_topic;
 
     public function user()
     {
@@ -18,5 +18,15 @@ class Topic extends Model
     public function treds()
     {
     	return $this->hasMany(Tred::class, 'content_id', 'id');
+    }
+
+    public function commun()
+    {
+        return $this->hasMany(Commun::class, 'content_id', 'id');
+    }
+
+    public function readId()
+    {
+        return $id_topic = $this->id;   
     }
 }
