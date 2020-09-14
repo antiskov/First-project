@@ -27,6 +27,6 @@ class Topic extends Model
 
     public function readId()
     {
-        return $id_topic = $this->id;   
+        return $id_topic = $this->id;
     }
 }

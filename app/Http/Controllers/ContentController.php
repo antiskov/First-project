@@ -25,19 +25,16 @@ class ContentController extends Controller
 
     public function tredsAction(Topic $topic)
     {
-        //dd($topic->id);
-        //запам'ятовує айді топіка
-        //dd($topic->readId());
         return view('content.treds', [
             'treds' => $topic->load('treds')->treds,
             'topicId' => $topic->readId()
+            //запа'ятовує айді топіка щоб потім відкрити написання треду
         ]);
     }
 
-    public function newTred()
+    public function newTred(Topic $topic)
     {
-        $topics = Topic::all();
-        return view('content.new_tred', ["topics" => $topics]);
+        return view('content.new_tred', ['topicId' => $topic->readId()]);
     }
 
     public function newTopic()
@@ -53,20 +50,28 @@ class ContentController extends Controller
     	return redirect()->back();
     }
 
-    public function addTred(Request $request)
+    public function addTred(Topic $topic, Request $request)
     {
     	$tred = new Tred($request->all());
     	$tred->user()->associate(auth()->user());
-    	$tred->topic()->associate($request->get('topic'));
+    	$tred->topic()->associate($topic);
     	$tred->save();
-        //треба зробити запам'ятовування айді топіку
 
     	return redirect()->back();
     }
 
-    public function commun()
+    /*public function commun(Topic $topic, Tred $tred)
     {
-        return view('commun');
+        return view('commun', [
+            'topicId' => $topic->readId(),
+            'tredId' => $tred->readId()
+        ]);
+        //dd($tred->readId());
+    }*/
+    
+    public function commun(Topic $topic)
+    {
+        return view('commun', ['topicId' => $topic->readId()]);
     }
 
     public function addCommun(Request $request)

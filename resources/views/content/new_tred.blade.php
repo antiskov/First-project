@@ -5,13 +5,8 @@
     <h3>Adding Tred</h3>
     @if (Route::has('login'))
     	@auth
-    	<form action="{{ route('add-tred') }}" method="post">
+    	<form action="{{ route('add-tred', $topicId) }}" method="post">
     		@csrf
-            <select name="topic">
-            @foreach ($topics as $value)
-                <option value="{{ $value->id }}">{{ $value->topic }}</option>
-            @endforeach
-            </select>
     		<div class="form-group">
     		    <input class="form-control" type="text" required placeholder="What you intersting?" name="tred_item">
   		    </div>

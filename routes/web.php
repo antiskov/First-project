@@ -21,19 +21,19 @@ Route::post('/add_topic', 'ContentController@addTopic')
 
 Route::get('/', 'ContentController@allTopics');
 
-Route::get('/{topic}/treds', 'ContentController@tredsAction')
+Route::get('topic/{topic}/treds', 'ContentController@tredsAction')
 ->name('treds');
 
-Route::get('/{topic}/treds/new_tred', 'ContentController@newTred')
+Route::get('topic/{topic}/treds/new_tred', 'ContentController@newTred')
 ->name('new-tred');
 
-/*Route::get('/new_tred', 'ContentController@newTred')
-->name('new-tred');*/
-
-Route::post('add_tred', 'ContentController@addTred')
+Route::post('topic/{topic}/treds/new_tred/add_tred', 'ContentController@addTred')
 ->name('add-tred');
 
-Route::get('/commun', 'ContentController@commun')
+/*Route::get('/{topic}/{tred}/commun', 'ContentController@commun')
+->name('commun'); */
+
+Route::get('topic/{topic}/tred/{tred}/commun', 'ContentController@commun')
 ->name('commun');
 
 Route::post('/add_commun','ContentController@addCommun')

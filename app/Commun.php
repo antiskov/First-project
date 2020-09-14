@@ -20,6 +20,6 @@ class Commun extends Model
 
     public function tred()
     {
-    	return $this->belongsTo(Tred::class);
+    	return $this->belongsTo(Tred::class, 'tred_id', 'id');
     }
 }
