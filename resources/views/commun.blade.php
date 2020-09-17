@@ -5,13 +5,8 @@
     <h3>Communication</h3>
     @foreach($communs as $commun)
     <div class="alert alert-warning">
-        <p>{{ $commun->commun_item }}</p>
-
-        @foreach($quotes as $quote)
-
-        <p>{{$quote->quote_item}}</p>
-        
-        @endforeach
+        <p><em>{{ $commun->commun_quote }}</em></p>
+        <h6>{{ $commun->commun_item }}</h6>
 
         @if (Route::has('login'))
         @auth

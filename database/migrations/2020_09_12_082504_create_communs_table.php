@@ -23,11 +23,9 @@ class CreateCommunsTable extends Migration
 
             $table->bigInteger('tred_id')->unsigned();
             $table->foreign('tred_id')->references('id')->on('treds');
-
-            $table->bigInteger('quote_id')->unsigned();
-            $table->foreign('quote_id')->references('id')->on('quotes');
             
             $table->string('commun_item');
+            $table->string('commun_quote');
             $table->timestamps();
         });
     }

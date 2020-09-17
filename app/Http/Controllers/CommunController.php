@@ -9,7 +9,6 @@ use App\Http\Requests\StoreContent;
 use App\Topic;
 use App\Tred;
 use App\Commun;
-use App\Quote;
 use User;
 
 class CommunController extends Controller
@@ -18,12 +17,9 @@ class CommunController extends Controller
     {      
 
         $commun = new Commun();
-        $quote = Quote::find(1);
 
         return view('commun', [
             'communs' => $tred->load('commun')->commun,
-            'quotes'=> $commun->load('quote')->quote,
-            //'quote' => $quote,
             'topicId' => $topic->id,
             'tredId' => $tred->id
         ]);
@@ -39,5 +35,27 @@ class CommunController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function addCommunQuote(Topic $topic, Tred $tred, Commun $commun, Request $request)
+    {
+        $this_commun = new Commun($request->all());
+        $this_commun->commun_quote =$commun->commun_item;
+        $this_commun->user()->associate(auth()->user());
+        $this_commun->topic()->associate($topic);        
+        $this_commun->tred()->associate($tred); 
+        $this_commun->save();
+
+        return redirect()->back();
+    }
+
+    public function communQuote(Topic $topic, Tred $tred, Commun $commun)
+    {
+
+        return view('quote', [
+            'communId' => $commun->id,
+            'topicId' => $topic->id,
+            'tredId' => $tred->id
+        ]);
     }
 }

@@ -33,10 +33,10 @@ Route::post('topic/{topic}/tred/{tred}/commun/add_commun','CommunController@addC
 
 Route::get(
 	'topic/{topic}/tred/{tred}/commun/{commun}/new_quote',
-	'QuoteController@quote'
+	'CommunController@communQuote'
 )->name('new-quote');
 
 Route::post(
 	'topic/{topic}/tred/{tred}/commun/{commun}/add_qoute/',
-	'QuoteController@addQuote'
+	'CommunController@addCommunQuote'
 )->name('add-quote');

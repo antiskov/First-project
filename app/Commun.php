@@ -22,9 +22,4 @@ class Commun extends Model
     {
     	return $this->belongsTo(Tred::class, 'tred_id', 'id');
     }
-
-    public function quote()
-    {
-        return $this->hasMany(Quote::class, 'commun_id', 'id');
-    }
 }
