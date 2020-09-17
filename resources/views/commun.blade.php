@@ -10,7 +10,7 @@
 
         @if (Route::has('login'))
         @auth
-        <a href="{{ route('new-quote', [$topicId, $tredId, $commun->id]) }}">New Quote</a>
+        <a href="{{ route('new-quote', [$topicId, $tredId, $commun->id]) }}">Give an answer</a>
         @endauth
         @endif
     </div>

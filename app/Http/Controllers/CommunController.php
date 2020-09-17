@@ -33,7 +33,7 @@ class CommunController extends Controller
         $commun->tred()->associate($tred);        
         $commun->save();
 
-        return redirect()->back();
+        return redirect()->route('commun', [$topic->id, $tred->id]);
 
     }
 
@@ -46,7 +46,7 @@ class CommunController extends Controller
         $this_commun->tred()->associate($tred); 
         $this_commun->save();
 
-        return redirect()->back();
+        return redirect()->route('commun', [$topic->id, $tred->id]);
     }
 
     public function communQuote(Topic $topic, Tred $tred, Commun $commun)

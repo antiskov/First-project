@@ -25,6 +25,6 @@ class TopicController extends Controller
     	$topic = new Topic($request->all());
     	auth()->user()->contents()->save($topic);
 
-    	return redirect()->back();
+    	return redirect()->route('topics');
     }
 }

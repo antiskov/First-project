@@ -32,6 +32,6 @@ class TredController extends Controller
     	$tred->topic()->associate($topic);
     	$tred->save();
 
-    	return redirect()->back();
+    	return redirect()->route('treds', [$topic->id]);
     }
 }

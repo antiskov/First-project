@@ -8,13 +8,15 @@ Auth::routes();
 Route::get('/admin', 'AdminController@admin')
 ->middleware('auth', 'is_admin');
 
+Route::get('/home', 'ProfileController@home');
+
 Route::get('/topic', 'TopicController@newTopic')
 ->middleware('auth')->name('topic');
 
 Route::post('/add_topic', 'TopicController@addTopic')
 ->name('add-topic');
 
-Route::get('/', 'TopicController@allTopics');
+Route::get('/', 'TopicController@allTopics')->name('topics');
 
 Route::get('topic/{topic}/treds', 'TredController@tredsAction')
 ->name('treds');

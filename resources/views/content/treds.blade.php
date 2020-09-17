@@ -4,7 +4,7 @@
 <div class="container">
     <h3>Treds</h3>
     @foreach($treds as $tred)
-    <div class="alert alert-dark">
+    <div class="alert alert-success">
         <a href="{{ route('commun', [$topicId, $tred->id]) }}">{{ $tred->tred_item }}</a>
     </div>
     @endforeach
