@@ -9,25 +9,35 @@ use App\Http\Requests\StoreContent;
 use App\Topic;
 use App\Tred;
 use App\Commun;
+use App\Quote;
 use User;
 
 class CommunController extends Controller
 {
-    public function commun(Topic $topic)
-    {
-        return view('commun', ['topicId' => $topic->readId()]);
+    public function commun(Topic $topic, Tred $tred)
+    {      
+
+        $commun = new Commun();
+        $quote = Quote::find(1);
+
+        return view('commun', [
+            'communs' => $tred->load('commun')->commun,
+            'quotes'=> $commun->load('quote')->quote,
+            //'quote' => $quote,
+            'topicId' => $topic->id,
+            'tredId' => $tred->id
+        ]);
     }
 
-    public function addCommun(Request $request)
+    public function addCommun(Topic $topic, Tred $tred, Request $request)
     {
         $commun = new Commun($request->all());
         $commun->user()->associate(auth()->user());
-        //це не працює бо в у вьюшкі не має згадки topic як це працює в у вьюшкі добавлення треду в опшинах
-        //$commun->topic()->associate($request->get('topic'));        
-        //$commun->tred()->associate($request->get('treds'));
-
-        
+        $commun->topic()->associate($topic);        
+        $commun->tred()->associate($tred);        
         $commun->save();
+
         return redirect()->back();
+
     }
 }

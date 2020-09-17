@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommunsTable extends Migration
+class CreateQuotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommunsTable extends Migration
      */
     public function up()
     {
-        Schema::create('communs', function (Blueprint $table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -24,10 +24,7 @@ class CreateCommunsTable extends Migration
             $table->bigInteger('tred_id')->unsigned();
             $table->foreign('tred_id')->references('id')->on('treds');
 
-            $table->bigInteger('quote_id')->unsigned();
-            $table->foreign('quote_id')->references('id')->on('quotes');
-            
-            $table->string('commun_item');
+            $table->string('quote_item');
             $table->timestamps();
         });
     }
@@ -39,6 +36,6 @@ class CreateCommunsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('communs');
+        Schema::dropIfExists('quotes');
     }
 }

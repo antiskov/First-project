@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Commun::class);
     }
+
+    public function quote()
+    {
+        return $this->hasMany(Commun::class);
+    }
 }

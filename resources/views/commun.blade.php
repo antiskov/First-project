@@ -3,9 +3,26 @@
 @section('content')
 <div class="container">
     <h3>Communication</h3>
+    @foreach($communs as $commun)
+    <div class="alert alert-warning">
+        <p>{{ $commun->commun_item }}</p>
+
+        @foreach($quotes as $quote)
+
+        <p>{{$quote->quote_item}}</p>
+        
+        @endforeach
+
+        @if (Route::has('login'))
+        @auth
+        <a href="{{ route('new-quote', [$topicId, $tredId, $commun->id]) }}">New Quote</a>
+        @endauth
+        @endif
+    </div>
+    @endforeach
     @if (Route::has('login'))
     	@auth
-    	<form action="{{ route('add-commun') }}" method="post">
+    	<form action="{{ route('add-commun', [$topicId, $tredId]) }}" method="post">
     		@csrf
     		<div class="form-group">
     		    <input class="form-control" type="text" required placeholder="What you intersting?" name="commun_item">
@@ -14,6 +31,7 @@
     	</form>    	
       @endauth
     @endif
+    </div>
 </div>
 @if ($errors->any())
     <div class="alert alert-danger">

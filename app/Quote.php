@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Commun extends Model
+class Quote extends Model
 {
-    public $fillable = ['commun_item'];
+    public $fillable = ['quote_item'];
 
     public function user()
     {
@@ -23,8 +23,8 @@ class Commun extends Model
     	return $this->belongsTo(Tred::class, 'tred_id', 'id');
     }
 
-    public function quote()
+    public function commun()
     {
-        return $this->hasMany(Quote::class, 'commun_id', 'id');
+    	return $this->belongsTo(Commun::class, 'commun_id', 'id');
     }
 }

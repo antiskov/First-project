@@ -25,11 +25,18 @@ Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
 ->name('add-tred');
 
-/*Route::get('/{topic}/{tred}/commun', 'ContentController@commun')
-->name('commun'); */
-
 Route::get('topic/{topic}/tred/{tred}/commun', 'CommunController@commun')
 ->name('commun');
 
-Route::post('/add_commun','CommunController@addCommun')
+Route::post('topic/{topic}/tred/{tred}/commun/add_commun','CommunController@addCommun')
 ->name('add-commun');
+
+Route::get(
+	'topic/{topic}/tred/{tred}/commun/{commun}/new_quote',
+	'QuoteController@quote'
+)->name('new-quote');
+
+Route::post(
+	'topic/{topic}/tred/{tred}/commun/{commun}/add_qoute/',
+	'QuoteController@addQuote'
+)->name('add-quote');

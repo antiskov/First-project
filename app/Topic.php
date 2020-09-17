@@ -25,6 +25,11 @@ class Topic extends Model
         return $this->hasMany(Commun::class, 'content_id', 'id');
     }
 
+    public function quote()
+    {
+        return $this->hasMany(Commun::class, 'content_id', 'id');
+    }
+
     public function readId()
     {
         return $id_topic = $this->id;

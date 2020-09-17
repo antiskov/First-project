@@ -24,6 +24,11 @@ class Tred extends Model
         return $this->hasMany(Commun::class, 'tred_id', 'id');
     }
 
+    public function quote()
+    {
+        return $this->hasMany(Commun::class, 'tred_id', 'id');
+    }
+
     public function readId()
     {
         return $id_tred = $this->id;  
