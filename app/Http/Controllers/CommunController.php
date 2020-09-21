@@ -13,48 +13,41 @@ use User;
 
 class CommunController extends Controller
 {
-    public function commun(Topic $topic, Tred $tred)
-    {      
-
-        $commun = new Commun();
-
+    public function commun(Tred $tred)
+    {
         return view('commun', [
             'communs' => $tred->load('commun')->commun,
-            'topicId' => $topic->id,
-            'tredId' => $tred->id
+            'tred' => $tred,
         ]);
     }
 
-    public function addCommun(Topic $topic, Tred $tred, Request $request)
+    public function addCommun(Tred $tred, Request $request)
     {
         $commun = new Commun($request->all());
         $commun->user()->associate(auth()->user());
-        $commun->topic()->associate($topic);        
-        $commun->tred()->associate($tred);        
+        $commun->tred()->associate($tred);
         $commun->save();
 
-        return redirect()->route('commun', [$topic->id, $tred->id]);
+        return redirect()->route('commun', [$tred->id]);
 
     }
 
-    public function addCommunQuote(Topic $topic, Tred $tred, Commun $commun, Request $request)
+    public function addCommunQuote(Tred $tred, Commun $commun, Request $request)
     {
         $this_commun = new Commun($request->all());
         $this_commun->commun_quote =$commun->commun_item;
         $this_commun->user()->associate(auth()->user());
-        $this_commun->topic()->associate($topic);        
-        $this_commun->tred()->associate($tred); 
+        $this_commun->tred()->associate($tred);
         $this_commun->save();
 
-        return redirect()->route('commun', [$topic->id, $tred->id]);
+        return redirect()->route('commun', [$tred->id]);
     }
 
-    public function communQuote(Topic $topic, Tred $tred, Commun $commun)
+    public function communQuote(Tred $tred, Commun $commun)
     {
 
         return view('quote', [
             'communId' => $commun->id,
-            'topicId' => $topic->id,
             'tredId' => $tred->id
         ]);
     }

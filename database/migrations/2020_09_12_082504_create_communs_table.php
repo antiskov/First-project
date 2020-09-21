@@ -18,14 +18,11 @@ class CreateCommunsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->bigInteger('content_id')->unsigned();
-            $table->foreign('content_id')->references('id')->on('contents');
-
             $table->bigInteger('tred_id')->unsigned();
             $table->foreign('tred_id')->references('id')->on('treds');
-            
+
             $table->string('commun_item');
-            $table->string('commun_quote');
+            $table->string('commun_quote')->nullable();
             $table->timestamps();
         });
     }

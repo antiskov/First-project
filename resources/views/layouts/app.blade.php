@@ -26,7 +26,7 @@
         <a class="nav-link" href="{{ url('/') }}">Forum</a>
             @if (Route::has('login'))
                     @auth
-                        <a class="nav-link" href="{{ url('/home') }}">Profile</a>
+                        <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
                     @endauth
             @endif
             @guest

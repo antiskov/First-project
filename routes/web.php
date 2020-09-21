@@ -8,17 +8,24 @@ Auth::routes();
 Route::get('/admin', 'AdminController@admin')
 ->middleware('auth', 'is_admin');
 
-Route::get('/home', 'ProfileController@home');
+Route::get('/profile', 'ProfileController@index');
+
+Route::get('/home', 'ProfileController@index');
+
+Route::post('profile_image', 'ProfileController@profileImage')
+->name('profile-image');
 
 Route::get('/topic', 'TopicController@newTopic')
-->middleware('auth')->name('topic');
+->middleware('auth')
+->name('topic');
 
 Route::post('/add_topic', 'TopicController@addTopic')
 ->name('add-topic');
 
-Route::get('/', 'TopicController@allTopics')->name('topics');
+Route::get('/', 'TopicController@allTopics')
+->name('topics');
 
-Route::get('topic/{topic}/treds', 'TredController@tredsAction')
+Route::get('topic/{topic}', 'TredController@tredsAction')
 ->name('treds');
 
 Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
@@ -27,18 +34,20 @@ Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
 ->name('add-tred');
 
-Route::get('topic/{topic}/tred/{tred}/commun', 'CommunController@commun')
+Route::get('/tred/{tred}/', 'CommunController@commun')
 ->name('commun');
 
-Route::post('topic/{topic}/tred/{tred}/commun/add_commun','CommunController@addCommun')
+Route::post('tred/{tred}/commun/add_commun','CommunController@addCommun')
 ->name('add-commun');
 
 Route::get(
-	'topic/{topic}/tred/{tred}/commun/{commun}/new_quote',
+	'tred/{tred}/commun/{commun}/new_quote',
 	'CommunController@communQuote'
 )->name('new-quote');
 
 Route::post(
-	'topic/{topic}/tred/{tred}/commun/{commun}/add_qoute/',
+	'tred/{tred}/commun/{commun}/add_qoute/',
 	'CommunController@addCommunQuote'
 )->name('add-quote');
+
+Route::get('/user_profile/{user}', 'UserController@userPage')->name('user-page');

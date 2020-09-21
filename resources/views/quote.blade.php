@@ -5,13 +5,13 @@
     <h3>Adding Quote</h3>
     @if (Route::has('login'))
     	@auth
-    	<form action="{{ route('add-quote', [$topicId, $tredId, $communId]) }}" method="post">
+    	<form action="{{ route('add-quote', [$tredId, $communId]) }}" method="post">
     		@csrf
     		<div class="form-group">
     		    <input class="form-control" type="text" required placeholder="What you intersting?" name="commun_item">
   		    </div>
     		<button type='submit' class="btn btn-success">Add qoute</button>
-    	</form>    	
+    	</form>
       @endauth
     @endif
 </div>
