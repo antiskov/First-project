@@ -12,16 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreContent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreContent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Topic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Topic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_06_083744_create_contents_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_172508_create_topics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_075317_treds.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_173142_create_treds_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/content/topic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/content/topic.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600697328952</updated>
-      <workItem from="1600697331608" duration="11785000" />
+      <workItem from="1600697331608" duration="13070000" />
     </task>
     <servers />
   </component>
@@ -239,9 +229,9 @@
       <screen x="72" y="29" width="1294" height="739" />
     </state>
     <state x="323" y="110" width="762" height="623" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.29.1294.739@72.29.1294.739" timestamp="1600700091363" />
-    <state x="371" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1600710729658">
+    <state x="371" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1600712494696">
       <screen x="72" y="29" width="1294" height="739" />
     </state>
-    <state x="371" y="88" width="672" height="678" key="search.everywhere.popup/72.29.1294.739@72.29.1294.739" timestamp="1600710729658" />
+    <state x="371" y="88" width="672" height="678" key="search.everywhere.popup/72.29.1294.739@72.29.1294.739" timestamp="1600712494696" />
   </component>
 </project>
