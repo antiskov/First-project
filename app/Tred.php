@@ -16,7 +16,7 @@ class Tred extends Model
 
     public function topic()
     {
-    	return $this->belongsTo(Topic::class, 'content_id', 'id');
+    	return $this->belongsTo(Topic::class, 'topic_id', 'id');
     }
 
     public function commun()
@@ -26,7 +26,7 @@ class Tred extends Model
 
     public function readId()
     {
-        return $id_tred = $this->id;  
+        return $id_tred = $this->id;
         dd(5);
     }
 }

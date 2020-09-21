@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Topic extends Model
 {
-    public $fillable = ['topic'];
-    public $table = 'contents';
+    public $fillable = ['topic_item'];
     public $id_topic;
 
     public function user()
@@ -15,9 +14,9 @@ class Topic extends Model
     	return $this->belongsTo(User::class);
     }
 
-    public function treds()
+    public function tred()
     {
-    	return $this->hasMany(Tred::class, 'content_id', 'id');
+    	return $this->hasMany(Tred::class, 'topic_id', 'id');
     }
 
     public function readId()

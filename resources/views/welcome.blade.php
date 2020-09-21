@@ -4,8 +4,8 @@
 <div class="container">
     <h3>Topics</h3>
     @foreach($data as $element)
-    <div class="alert alert-info">
-        <a href="{{route('treds', $element->id)}}">{{ $element->topic }}</a>
+    <div class="alert alert-dark">
+        <a href="{{route('treds', $element->id)}}">{{ $element->topic_item }}</a>
     </div>
     @endforeach
     @if (Route::has('login'))
@@ -15,4 +15,3 @@
     @endif
 </div>
 @endsection
-  

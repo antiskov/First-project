@@ -20,10 +20,12 @@ class TopicController extends Controller
         return view('content.topic');
     }
 
-    public function addTopic(StoreContent $request) 
+    public function addTopic(StoreContent $request)
     {
     	$topic = new Topic($request->all());
-    	auth()->user()->contents()->save($topic);
+        $topic->user()->associate(auth()->user());
+        $topic->save();
+
 
     	return redirect()->route('topics');
     }

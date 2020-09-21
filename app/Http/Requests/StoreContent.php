@@ -24,7 +24,7 @@ class StoreContent extends FormRequest
     public function rules()
     {
         return [
-            'topic' => [
+            'topic_item' => [
                 'required',
                 'string',
                 'min:3',

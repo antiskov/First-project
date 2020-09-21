@@ -14,7 +14,7 @@ class TredController extends Controller
     public function tredsAction(Topic $topic)
     {
         return view('content.treds', [
-            'treds' => $topic->load('treds')->treds,
+            'treds' => $topic->load('tred')->tred,
             'topicId' => $topic->readId()
             //запа'ятовує айді топіка щоб потім відкрити написання треду
         ]);
