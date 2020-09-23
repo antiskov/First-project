@@ -4,14 +4,16 @@
 <div class="container">
     <h3>Topics</h3>
     @foreach($data as $element)
-    <div class="alert alert-dark">
-        <a href="{{route('treds', $element->id)}}">{{ $element->topic_item }}</a>
-        @auth
-        @if(auth()->user()->id === $element->user->id xor $element->id === 1)
-            <a href="{{route('delete-topic', [$element->id])}}" class="text-danger float-right">delete</a>
+        @if($element->id !== 1)
+            <div class="alert alert-dark">
+                <a href="{{route('treds', $element->id)}}">{{ $element->topic_item }}</a>
+            @auth
+                @if(auth()->user()->id === $element->user->id)
+                    <a href="{{route('delete-topic', [$element->id])}}" class="text-danger float-right">delete</a>
+                @endif
+            @endauth
+            </div>
         @endif
-        @endauth
-    </div>
     @endforeach
     @if (Route::has('login'))
       @auth

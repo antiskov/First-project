@@ -4,14 +4,16 @@
 <div class="container">
     <h3>Treds</h3>
     @foreach($treds as $tred)
-    <div class="alert alert-success">
-        <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
-        @auth
-        @if(auth()->user()->id === $tred->user->id xor $tred->id === 1)
-            <a href="{{route('delete-tred', [$tred->id])}}" class="text-danger float-right">delete</a>
+        @if($tred->id !== 1)
+            <div class="alert alert-success">
+                <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
+            @auth
+                @if(auth()->user()->id === $tred->user->id)
+                    <a href="{{route('delete-tred', [$tred->id])}}" class="text-danger float-right">delete</a>
+                @endif
+            @endauth
+            </div>
         @endif
-        @endauth
-    </div>
     @endforeach
     @if (Route::has('login'))
       @auth
