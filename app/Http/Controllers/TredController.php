@@ -14,22 +14,22 @@ class TredController extends Controller
     public function tredsAction(Topic $topic)
     {
         return view('content.treds', [
-            'treds' => $topic->load('tred')->tred,
-            'topicId' => $topic->readId()
+            'treds' => $topic->load('treds')->treds,
+            'topicId' => $topic->id
             //запа'ятовує айді топіка щоб потім відкрити написання треду
         ]);
     }
 
     public function newTred(Topic $topic)
     {
-        return view('content.new_tred', ['topicId' => $topic->readId()]);
+        return view('content.new_tred', ['topicId' => $topic->id]);
     }
 
     public function addTred(Topic $topic, Request $request)
     {
     	$tred = new Tred($request->all());
     	$tred->user()->associate(auth()->user());
-    	$tred->topic()->associate($topic);
+    	$tred->topics()->associate($topic);
     	$tred->save();
 
     	return redirect()->route('treds', [$topic->id]);

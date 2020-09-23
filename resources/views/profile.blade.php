@@ -12,11 +12,11 @@
     	<input type="file" required name="image">
     	<input type="submit" name="Upload">
     </form>
-    @if(Auth::user()->topic->count() > 0)
+    @if(Auth::user()->topics->count() > 0)
         <h3>topics</h3>
-        @foreach(Auth::user()->topic as $topic)
+        @foreach(Auth::user()->topics as $topic)
             <div class="alert alert-dark">
-                <p>{{ $topic->topic }}</p>
+                <p>{{ $topic->topic_item }}</p>
             </div>
         @endforeach
     @else
@@ -24,9 +24,9 @@
             <h4>dont have own topics</h4>
         </div>
     @endif
-    @if(Auth::user()->tred->count() > 0)
+    @if(Auth::user()->treds->count() > 0)
         <h3>treds</h3>
-        @foreach(Auth::user()->tred as $tred)
+        @foreach(Auth::user()->treds as $tred)
             <div class="alert alert-success">
                 <p>{{ $tred->tred_item }}</p>
             </div>

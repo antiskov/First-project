@@ -13,7 +13,7 @@ class Commun extends Model
     	return $this->belongsTo(User::class);
     }
 
-    public function tred()
+    public function treds()
     {
     	return $this->belongsTo(Tred::class, 'tred_id', 'id');
     }

@@ -42,17 +42,17 @@ class User extends Authenticatable
         return $this->is_admin;
     }
 
-    public function topic()
+    public function topics()
     {
         return $this->hasMany(Topic::class);
     }
 
-    public function tred()
+    public function treds()
     {
         return $this->hasMany(Tred::class);
     }
 
-    public function commun()
+    public function communs()
     {
         return $this->hasMany(Commun::class);
     }

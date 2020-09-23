@@ -5,9 +5,9 @@
         <img src="{{ asset('/storage/images/'.$user->avatar)}}" alt="avatar" width='100' height="100">
         <br>
         <h1>{{ $user->name }}</h1>
-        @if($user->tred->count() > 0)
+        @if($user->treds->count() > 0)
         <h3>treds</h3>
-            @foreach($user->tred as $tred)
+            @foreach($user->treds as $tred)
                 <div class="alert alert-success">
                     <p>{{ $tred->tred_item }}</p>
                 </div>
@@ -18,7 +18,7 @@
             </div>
         @endif
         <h3>messeges</h3>
-        @foreach($user->commun as $commun)
+        @foreach($user->communs as $commun)
             @if($commun)
             <div class="alert alert-warning">
                 <p>{{ $commun->commun_item }}</p>

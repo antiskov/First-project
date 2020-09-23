@@ -12,6 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Commun.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Commun.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommunController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommunController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Topic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Topic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tred.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tred.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user_profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +204,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -229,9 +238,10 @@
       <screen x="72" y="29" width="1294" height="739" />
     </state>
     <state x="323" y="110" width="762" height="623" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.29.1294.739@72.29.1294.739" timestamp="1600700091363" />
-    <state x="371" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1600712494696">
-      <screen x="72" y="29" width="1294" height="739" />
+    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup" timestamp="1600862969086">
+      <screen x="72" y="27" width="1294" height="741" />
     </state>
+    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1600862969086" />
     <state x="371" y="88" width="672" height="678" key="search.everywhere.popup/72.29.1294.739@72.29.1294.739" timestamp="1600712494696" />
   </component>
 </project>
