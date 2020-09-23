@@ -34,4 +34,11 @@ class TredController extends Controller
 
     	return redirect()->route('treds', [$topic->id]);
     }
+
+    public function  deleteTred(Tred $tred)
+    {
+        $tred->delete();
+
+        return redirect()->route('treds');
+    }
 }

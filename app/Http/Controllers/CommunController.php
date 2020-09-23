@@ -51,4 +51,11 @@ class CommunController extends Controller
             'tredId' => $tred->id
         ]);
     }
+
+    public function deleteCommun(Tred $tred, Commun $commun)
+    {
+        $commun->delete();
+
+        return  redirect()->route('commun', [$tred->id]);
+    }
 }

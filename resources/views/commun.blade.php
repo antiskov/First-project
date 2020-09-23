@@ -5,6 +5,11 @@
     <h3>Communication</h3>
     @foreach($communs as $commun)
     <div class="alert alert-warning">
+        @auth
+            @if(auth()->user()->id === $commun->user->id)
+                <a href="{{route('delete-commun', [$commun->treds->id, $commun->id])}}" class="text-danger float-right">delete</a>
+            @endif
+        @endauth
         <div class='float-rigth'>{{ $commun->created_at }}</div>
         <a href="{{ route('user-page', [$commun->user->id]) }}">
             <img src="{{ asset('/storage/images/'.$commun->user->avatar)}}" alt="avatar" width='100' height="100" board='50%'>
