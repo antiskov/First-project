@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href = "{{ asset('bootstrap/css/bootstrap.css') }} "rel="stylesheet" />
-   
+
 </head>
 <body>
     <nav class="navbar navbar-light">
@@ -29,6 +29,11 @@
                         <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
                     @endauth
             @endif
+            @auth
+                @if(auth()->user()->is_admin === "1")
+                    <a href="{{url('admin')}}">admin panel</a>
+                @endif
+            @endauth
             @guest
                <a class="nav-link" href="{{ url('/login')  }}">{{ __('Login') }}</a>
                 @if (Route::has('register'))
@@ -51,7 +56,7 @@
                         </form>
                     </div>
             @endguest
-    </nav> 
+    </nav>
         @yield('content')
 </body>
 </html>

@@ -7,7 +7,7 @@
     <div class="alert alert-success">
         <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
         @auth
-        @if(auth()->user()->id === $tred->user->id)
+        @if(auth()->user()->id === $tred->user->id xor $tred->id === 1)
             <a href="{{route('delete-tred', [$tred->id])}}" class="text-danger float-right">delete</a>
         @endif
         @endauth
