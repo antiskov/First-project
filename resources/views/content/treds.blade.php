@@ -5,7 +5,7 @@
     <h3>Treds</h3>
     @foreach($treds as $tred)
             <div class="alert alert-success">
-                <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
+                <a href="{{ route('board', [$tred->id]) }}">{{ $tred->tred_item }}</a>
             @auth
                 @if(auth()->user()->id === $tred->user->id)
                     <a href="{{route('delete-tred', [$topicId, $tred->id])}}" class="text-danger float-right">delete</a>

@@ -20,9 +20,9 @@ class Tred extends Model
     	return $this->belongsTo(Topic::class, 'topic_id', 'id');
     }
 
-    public function communs()
+    public function boards()
     {
-        return $this->hasMany(Commun::class, 'tred_id', 'id');
+        return $this->hasMany(Board::class, 'tred_id', 'id');
     }
 }
 

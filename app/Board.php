@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Commun extends Model
+class Board extends Model
 {
-    public $fillable = ['commun_item'];
+    public $fillable = ['board_item'];
+    use SoftDeletes;
 
     public function user()
     {

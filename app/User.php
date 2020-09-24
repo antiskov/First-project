@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function communs()
     {
-        return $this->hasMany(Commun::class);
+        return $this->hasMany(Board::class);
     }
 }

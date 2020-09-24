@@ -37,26 +37,26 @@ Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
     ->name('add-tred');
 
-Route::get('{topic}/{tred}/delete', 'TredController@deleteTred')
+Route::get('{topic}/tred/{tred}/delete', 'TredController@deleteTred')
     ->name('delete-tred');
 
-Route::get('/tred/{tred}/', 'CommunController@commun')
-    ->name('commun');
+Route::get('/tred/{tred}/', 'BoardController@board')
+    ->name('board');
 
-Route::post('tred/{tred}/commun/add_commun','CommunController@addCommun')
-    ->name('add-commun');
+Route::post('tred/{tred}/board/add_board','BoardController@addBoard')
+    ->name('add-board');
 
 Route::get(
-	'tred/{tred}/commun/{commun}/new_quote',
-	'CommunController@communQuote'
+	'tred/{tred}/board/{board}/new_quote',
+	'BoardController@boardQuote'
     )->name('new-quote');
 
-Route::get('{tred}/{commun}/delete', 'CommunController@deleteCommun')
-    ->name('delete-commun');
+Route::get('{tred}/{board}/delete', 'BoardController@deleteBoard')
+    ->name('delete-board');
 
 Route::post(
-	'tred/{tred}/commun/{commun}/add_qoute/',
-	'CommunController@addCommunQuote'
+	'tred/{tred}/board/{board}/add_board/',
+	'BoardController@addBoardQuote'
     )->name('add-quote');
 
 Route::get('/user_profile/{user}', 'UserController@userPage')
