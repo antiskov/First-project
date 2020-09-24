@@ -21,8 +21,8 @@ class CreateTredsTable extends Migration
             $table->string('tred_item');
 
             $table->bigInteger('topic_id')->unsigned();
-            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');;
-
+            $table->foreign('topic_id')->references('id')->on('topics');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

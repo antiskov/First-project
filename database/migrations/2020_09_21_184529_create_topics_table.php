@@ -22,6 +22,7 @@ class CreateTopicsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('topic_item');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

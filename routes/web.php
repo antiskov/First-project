@@ -37,7 +37,7 @@ Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
     ->name('add-tred');
 
-Route::get('{tred}/delete', 'TredController@deleteTred')
+Route::get('{topic}/{tred}/delete', 'TredController@deleteTred')
     ->name('delete-tred');
 
 Route::get('/tred/{tred}/', 'CommunController@commun')

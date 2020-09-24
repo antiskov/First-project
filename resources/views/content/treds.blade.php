@@ -8,7 +8,7 @@
                 <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
             @auth
                 @if(auth()->user()->id === $tred->user->id)
-                    <a href="{{route('delete-tred', [$tred->id])}}" class="text-danger float-right">delete</a>
+                    <a href="{{route('delete-tred', [$topicId, $tred->id])}}" class="text-danger float-right">delete</a>
                 @endif
             @endauth
             </div>

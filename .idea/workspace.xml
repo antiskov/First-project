@@ -12,13 +12,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Topic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Topic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Tred.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tred.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_184529_create_topics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_184529_create_topics_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_184539_create_treds_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_184539_create_treds_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_184550_create_communs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_184550_create_communs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/content/treds.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/content/treds.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +190,7 @@
       <updated>1600697328952</updated>
       <workItem from="1600697331608" duration="13070000" />
       <workItem from="1600953916376" duration="3959000" />
+      <workItem from="1600963139875" duration="2020000" />
     </task>
     <servers />
   </component>

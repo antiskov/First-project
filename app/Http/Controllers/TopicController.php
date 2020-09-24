@@ -31,9 +31,9 @@ class TopicController extends Controller
     	return redirect()->route('topics');
     }
 
-    public function  deleteTopic(Topic $topic)
+    public function  deleteTopic($topic)
     {
-        $topic->delete();
+        Topic::destroy($topic);
 
         return redirect()->route('topics');
     }

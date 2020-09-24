@@ -35,11 +35,10 @@ class TredController extends Controller
     	return redirect()->route('treds', [$topic->id]);
     }
 
-    public function  deleteTred(Tred $tred)
+    public function  deleteTred(Topic $topic, Tred $tred)
     {
-        $tred->communs->delete;
         $tred->delete();
 
-        return redirect()->route('treds');
+        return redirect()->route('treds', [$topic]);
     }
 }

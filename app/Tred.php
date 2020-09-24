@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tred extends Model
 {
     public $fillable = ['tred_item'];
+    use SoftDeletes;
 
     public function user()
     {
