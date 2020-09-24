@@ -4,7 +4,6 @@
 <div class="container">
     <h3>Treds</h3>
     @foreach($treds as $tred)
-        @if($tred->id !== 1)
             <div class="alert alert-success">
                 <a href="{{ route('commun', [$tred->id]) }}">{{ $tred->tred_item }}</a>
             @auth
@@ -13,7 +12,6 @@
                 @endif
             @endauth
             </div>
-        @endif
     @endforeach
     @if (Route::has('login'))
       @auth

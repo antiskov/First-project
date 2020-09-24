@@ -37,6 +37,7 @@ class TredController extends Controller
 
     public function  deleteTred(Tred $tred)
     {
+        $tred->communs->delete;
         $tred->delete();
 
         return redirect()->route('treds');

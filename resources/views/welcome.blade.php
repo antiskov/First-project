@@ -4,7 +4,6 @@
 <div class="container">
     <h3>Topics</h3>
     @foreach($data as $element)
-        @if($element->id !== 1)
             <div class="alert alert-dark">
                 <a href="{{route('treds', $element->id)}}">{{ $element->topic_item }}</a>
             @auth
@@ -13,7 +12,6 @@
                 @endif
             @endauth
             </div>
-        @endif
     @endforeach
     @if (Route::has('login'))
       @auth

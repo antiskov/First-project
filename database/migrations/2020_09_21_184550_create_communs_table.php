@@ -19,7 +19,7 @@ class CreateCommunsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->bigInteger('tred_id')->unsigned();
-            $table->foreign('tred_id')->references('id')->on('treds');
+            $table->foreign('tred_id')->references('id')->on('treds')->onDelete('cascade');
 
             $table->string('commun_item');
             $table->string('commun_quote')->nullable();

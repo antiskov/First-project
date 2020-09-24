@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -21,7 +22,11 @@ class ProfileController extends Controller
     {
     	if($request->hasFile('image'))
     	{
-    		$filename = $request->image->getClientOriginalName();
+    	    if(auth()->user()->avatar !== 'default-user-icon-4.jpg')
+            {
+                Storage::delete('/public/images/' . auth()->user()->avatar);
+            }
+    	    $filename = $request->image->getClientOriginalName();
     		$request->image->storeAs('images', $filename, 'public');
    			auth()->user()->update(['avatar' => $filename]);
     	}

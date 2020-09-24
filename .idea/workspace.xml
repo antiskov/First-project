@@ -12,10 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/commun.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/commun.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TredController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_184539_create_treds_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_184539_create_treds_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_21_184550_create_communs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_21_184550_create_communs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/content/treds.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/content/treds.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +25,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -185,6 +187,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600697328952</updated>
       <workItem from="1600697331608" duration="13070000" />
+      <workItem from="1600953916376" duration="3959000" />
     </task>
     <servers />
   </component>
@@ -240,5 +243,9 @@
     </state>
     <state x="371" y="86" width="672" height="680" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1600866596949" />
     <state x="371" y="88" width="672" height="678" key="search.everywhere.popup/72.29.1294.739@72.29.1294.739" timestamp="1600712494696" />
+    <state x="444" y="311" width="540" height="179" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600956727198">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="444" y="311" width="540" height="179" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/72.27.1294.741@72.27.1294.741" timestamp="1600956727198" />
   </component>
 </project>
