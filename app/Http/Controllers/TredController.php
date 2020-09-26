@@ -39,14 +39,21 @@ class TredController extends Controller
     {
         $tred->delete();
 
-        return redirect()->route('treds', [$topic]);
+        return redirect()->route('treds', [$topic->id]);
+    }
+
+    public function  deleteTredForAdmin(Topic $topic, Tred $tred)
+    {
+        $tred->delete();
+
+        return redirect()->route('admin-treds', [$topic->id]);
     }
 
     public function  forceDeleteTred(Topic $topic, Tred $tred)
     {
         $tred->forceDelete();
 
-        return redirect()->route('treds', [$topic]);
+        return redirect()->route('admin-treds', [$topic->id]);
     }
 
     public function tredsActionForAdmin(Topic $topic)
@@ -55,5 +62,12 @@ class TredController extends Controller
             'treds' => $topic->load('treds')->treds,
             'topicId' => $topic->id
         ]);
+    }
+
+    public function restoreTred($tred)
+    {
+        Tred::withTrashed()->find($tred)->restore();
+
+        return  redirect()->route('admin-panel');
     }
 }

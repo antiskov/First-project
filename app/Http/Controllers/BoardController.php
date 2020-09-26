@@ -15,6 +15,7 @@ class BoardController extends Controller
 {
     public function board(Tred $tred)
     {
+
         return view('board', [
             'boards' => $tred->load('boards')->boards,
             'tred' => $tred,
@@ -53,7 +54,6 @@ class BoardController extends Controller
 
     public function boardQuote(Tred $tred, Board $board)
     {
-
         return view('quote', [
             'boardId' => $board->id,
             'tredId' => $tred->id
@@ -63,6 +63,21 @@ class BoardController extends Controller
     public function deleteBoard(Tred $tred, Board $board)
     {
         $board->delete();
+
         return  redirect()->route('board', [$tred->id]);
+    }
+
+    public function forceDeleteBoard(Tred $tred, Board $board)
+    {
+        $board->forceDelete();
+
+        return  redirect()->route('admin-board', [$tred->id]);
+    }
+
+    public function restoreBoard(Tred $tred, $board)
+    {
+        Board::withTrashed()->find($board)->restore();
+
+        return  redirect()->route('admin-board', [$tred->id]);
     }
 }

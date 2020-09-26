@@ -38,10 +38,24 @@ class TopicController extends Controller
         return redirect()->route('topics');
     }
 
+    public function  deleteTopicForAdmin($topic)
+    {
+        Topic::destroy($topic);
+
+        return redirect()->route('admin-panel');
+    }
+
     public function forceDeleteTopic(Topic $topic)
     {
         $topic->forceDelete();
 
         return redirect()->route('admin-panel');
+    }
+
+    public function restoreTopic($topic)
+    {
+        Topic::withTrashed()->find($topic)->restore();
+
+        return  redirect()->route('admin-panel');
     }
 }
