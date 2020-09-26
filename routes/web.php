@@ -6,7 +6,11 @@ use App\Topic;
 Auth::routes();
 
 Route::get('/admin', 'AdminController@admin')
-    ->middleware('auth', 'is_admin');
+    ->middleware('auth', 'is_admin')
+    ->name('admin-panel');
+
+Route::get('admin/topic/{topic}', 'TredController@tredsActionForAdmin')
+    ->name('admin-treds');
 
 Route::get('/profile', 'ProfileController@index');
 
@@ -28,6 +32,9 @@ Route::get('/', 'TopicController@allTopics')
 Route::get('{topic}/delete', 'TopicController@deleteTopic')
     ->name('delete-topic');
 
+Route::get('{topic}/forcedelete', 'TopicController@forceDeleteTopic')
+    ->name('forcedelete-topic');
+
 Route::get('topic/{topic}', 'TredController@tredsAction')
     ->name('treds');
 
@@ -40,8 +47,14 @@ Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
 Route::get('{topic}/tred/{tred}/delete', 'TredController@deleteTred')
     ->name('delete-tred');
 
+Route::get('{topic}/tred/{tred}/forcedelete', 'TredController@forceDeleteTred')
+    ->name('forcedelete-tred');
+
 Route::get('/tred/{tred}/', 'BoardController@board')
     ->name('board');
+
+Route::get('admin/tred/{tred}/', 'BoardController@boardForAdmin')
+    ->name('admin-board');
 
 Route::post('tred/{tred}/board/add_board','BoardController@addBoard')
     ->name('add-board');

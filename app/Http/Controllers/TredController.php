@@ -41,4 +41,19 @@ class TredController extends Controller
 
         return redirect()->route('treds', [$topic]);
     }
+
+    public function  forceDeleteTred(Topic $topic, Tred $tred)
+    {
+        $tred->forceDelete();
+
+        return redirect()->route('treds', [$topic]);
+    }
+
+    public function tredsActionForAdmin(Topic $topic)
+    {
+        return view('admin.admin_treds', [
+            'treds' => $topic->load('treds')->treds,
+            'topicId' => $topic->id
+        ]);
+    }
 }

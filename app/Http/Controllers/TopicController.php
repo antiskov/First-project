@@ -37,4 +37,11 @@ class TopicController extends Controller
 
         return redirect()->route('topics');
     }
+
+    public function forceDeleteTopic(Topic $topic)
+    {
+        $topic->forceDelete();
+
+        return redirect()->route('admin-panel');
+    }
 }

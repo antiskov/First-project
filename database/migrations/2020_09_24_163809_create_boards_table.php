@@ -19,7 +19,7 @@ class CreateBoardsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->bigInteger('tred_id')->unsigned();
-            $table->foreign('tred_id')->references('id')->on('treds');
+            $table->foreign('tred_id')->references('id')->on('treds')->onDelete('cascade');
 
             $table->string('board_item');
             $table->string('board_quote')->nullable();

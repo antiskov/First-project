@@ -21,6 +21,14 @@ class BoardController extends Controller
         ]);
     }
 
+    public function boardForAdmin(Tred $tred)
+    {
+        return view('admin.admin_boards', [
+            'boards' => $tred->load('boards')->boards,
+            'tred' => $tred,
+        ]);
+    }
+
     public function addBoard(Tred $tred, Request $request)
     {
         $board = new Board($request->all());
