@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardsTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boards', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('board_item');
+            $table->string('answer_item');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('tred_id')->unsigned();
-            $table->foreign('tred_id')->references('id')
-                ->on('treds')
+            $table->bigInteger('board_id')->unsigned();
+            $table->foreign('board_id')->references('id')->on('boards')
                 ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
@@ -34,6 +33,6 @@ class CreateBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boards');
+        Schema::dropIfExists('answers');
     }
 }

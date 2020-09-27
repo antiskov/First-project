@@ -24,7 +24,7 @@ Route::get('/topic', 'TopicController@newTopic')
     ->name('topic');
 
 Route::post('/add_topic', 'TopicController@addTopic')
-    ->middleware('auth', 'throttle:1,1')
+    ->middleware('auth', 'throttle:2,1')
     ->name('add-topic');
 
 Route::get('/', 'TopicController@allTopics')
@@ -49,7 +49,7 @@ Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
     ->name('new-tred');
 
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
-    ->middleware('auth', 'throttle:1,1')
+    ->middleware('auth', 'throttle:2,1')
     ->name('add-tred');
 
 Route::get('{topic}/tred/{tred}/delete', 'TredController@deleteTred')
@@ -71,13 +71,8 @@ Route::get('admin/tred/{tred}/', 'BoardController@boardForAdmin')
     ->name('admin-board');
 
 Route::post('tred/{tred}/board/add_board','BoardController@addBoard')
-    ->middleware('auth', 'throttle:1,1')
+    ->middleware('auth', 'throttle:3,1')
     ->name('add-board');
-
-Route::get(
-	'tred/{tred}/board/{board}/new_quote',
-	'BoardController@boardQuote'
-    )->name('new-quote');
 
 Route::get('{tred}/{board}/delete', 'BoardController@deleteBoard')
     ->name('delete-board');
@@ -86,16 +81,18 @@ Route::get('{tred}/{board}/forcedelete', 'BoardController@forceDeleteBoard')
     ->middleware('auth', 'is_admin')
     ->name('forcedelete-board');
 
+Route::get(
+    'tred/{tred}/board/{board}/answer',
+    'AnswerController@answer'
+)->name('answer');
+
 Route::post(
 	'tred/{tred}/board/{board}/add_board',
-	'BoardController@addBoardQuote'
-    )->name('add-quote');
+	'AnswerController@addAnswer'
+    )->name('add-answer');
 
 Route::get('/user_profile/{user}', 'UserController@userPage')
     ->name('user-page');
-
-
-
 
 Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/topic/{topic}/restore', 'TopicController@restoreTopic')

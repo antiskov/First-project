@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Board;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreContent;
 use App\Topic;
 use App\Tred;
 
@@ -24,7 +24,7 @@ class TredController extends Controller
         return view('content.new_tred', ['topicId' => $topic->id]);
     }
 
-    public function addTred(Topic $topic, Request $request)
+    public function addTred(Topic $topic, StoreContent $request)
     {
         $tred = new Tred($request->all());
         $tred->user()->associate(auth()->user());

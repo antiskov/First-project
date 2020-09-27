@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContent;
 use App\Topic;
-use Illuminate\Http\Request;
 use App\Tred;
 use App\Board;
 
@@ -26,7 +26,7 @@ class BoardController extends Controller
         ]);
     }
 
-    public function addBoard(Tred $tred, Request $request)
+    public function addBoard(Tred $tred, StoreContent $request)
     {
         $board = new Board($request->all());
         $board->user()->associate(auth()->user());
@@ -37,18 +37,7 @@ class BoardController extends Controller
 
     }
 
-    public function addBoardQuote(Tred $tred, Board $board, Request $request)
-    {
-        $newbBoard = new Board($request->all());
-        $newbBoard->board_quote = $board->board_item;
-        $newbBoard->user()->associate(auth()->user());
-        $newbBoard->tred()->associate($tred);
-        $newbBoard->save();
-
-        return redirect()->route('board', [$tred->id]);
-    }
-
-    public function boardQuote(Tred $tred, Board $board)
+    public function boardAnswer(Tred $tred, Board $board)
     {
         return view('quote', [
             'boardId' => $board->id,

@@ -10,6 +10,7 @@
     	<input type="submit" name="Upload">
     </form>
     <br>
+    <br>
     @if(Auth::user()->topics->count() > 0)
         <h3>topics</h3>
         @foreach(Auth::user()->topics as $topic)

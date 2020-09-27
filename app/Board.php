@@ -34,4 +34,22 @@ class Board extends Model
     {
         return $this->belongsTo(Tred::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($boards)
+        {
+            foreach ($boards->answers()->get() as $answer)
+            {
+                $answer->delete();
+            }
+        });
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

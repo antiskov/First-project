@@ -14,14 +14,20 @@
                 <a href="{{ route('user-page', [$board->user->id]) }}">
                     <img src="{{ asset('/storage/images/'.$board->user->avatar)}}" alt="avatar" width='100' height="100" board='50%'>
                 </a>
-                <p class="text-secondary"><em>{{ $board->board_quote }}</em></p>
+                    <br><br>
                 <h6>{{ $board->board_item }}</h6>
                 <p class="text-danger text-rigth">{{ $board->user->name }}</p>
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ route('new-quote', ['tred' => $tred->id, $board->id]) }}">Give an answer</a>
+                        <a href="{{ route('answer', ['tred' => $tred->id, $board->id]) }}">Give an answer</a>
                     @endauth
                 @endif
+                @foreach($board->answers as $answer)
+                    <div class="alert alert-info">
+                        <p class="text-danger">{{$answer->user->name}}</p>
+                        <p>{{$answer->answer_item}}</p>
+                    </div>
+                @endforeach
             </div>
         @endforeach
         @if (Route::has('login'))
