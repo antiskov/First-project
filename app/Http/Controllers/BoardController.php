@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreContent;
 use App\Topic;
+use Illuminate\Http\Request;
 use App\Tred;
 use App\Board;
-use User;
 
 class BoardController extends Controller
 {
@@ -34,7 +30,7 @@ class BoardController extends Controller
     {
         $board = new Board($request->all());
         $board->user()->associate(auth()->user());
-        $board->treds()->associate($tred);
+        $board->tred()->associate($tred);
         $board->save();
 
         return redirect()->route('board', [$tred->id]);
@@ -43,11 +39,11 @@ class BoardController extends Controller
 
     public function addBoardQuote(Tred $tred, Board $board, Request $request)
     {
-        $this_board = new Board($request->all());
-        $this_board->board_quote =$board->board_item;
-        $this_board->user()->associate(auth()->user());
-        $this_board->treds()->associate($tred);
-        $this_board->save();
+        $newbBoard = new Board($request->all());
+        $newbBoard->board_quote = $board->board_item;
+        $newbBoard->user()->associate(auth()->user());
+        $newbBoard->tred()->associate($tred);
+        $newbBoard->save();
 
         return redirect()->route('board', [$tred->id]);
     }
@@ -64,20 +60,24 @@ class BoardController extends Controller
     {
         $board->delete();
 
-        return  redirect()->route('board', [$tred->id]);
+        return redirect()->route('board', [$tred->id]);
     }
 
     public function forceDeleteBoard(Tred $tred, Board $board)
     {
         $board->forceDelete();
 
-        return  redirect()->route('admin-board', [$tred->id]);
+        return redirect()->route('admin-board', [$tred->id]);
     }
 
-    public function restoreBoard(Tred $tred, $board)
+    public function restoreBoard($board)
     {
         Board::withTrashed()->find($board)->restore();
 
-        return  redirect()->route('admin-board', [$tred->id]);
+        return view('admin.admin_softdeleted', [
+            'topics' => Topic::onlyTrashed()->get(),
+            'treds' => Tred::onlyTrashed()->get(),
+            'boards' => Board::onlyTrashed()->get()
+        ]);
     }
 }

@@ -7,22 +7,36 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tred extends Model
 {
-    public $fillable = ['tred_item'];
     use SoftDeletes;
+    public $fillable = ['tred_item'];
+    protected $dates = ['deleted_at'];
 
     public function user()
     {
     	return $this->belongsTo(User::class);
     }
 
-    public function topics()
+    public function topic()
     {
-    	return $this->belongsTo(Topic::class, 'topic_id', 'id');
+    	return $this->belongsTo(Topic::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($treds)
+        {
+            foreach ($treds->boards()->get() as $board)
+            {
+                $board->delete();
+            }
+        });
     }
 
     public function boards()
     {
-        return $this->hasMany(Board::class, 'tred_id', 'id');
+        return $this->hasMany(Board::class);
     }
 }
 

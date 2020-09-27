@@ -3,20 +3,35 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Board
+ * @package App
+ */
 class Board extends Model
 {
-    public $fillable = ['board_item'];
     use SoftDeletes;
 
+    /**
+     * @var string[]
+     */
+    public $fillable = ['board_item'];
+
+    /**
+     * @return BelongsTo
+     */
     public function user()
     {
-    	return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function treds()
+    /**
+     * @return BelongsTo
+     */
+    public function tred()
     {
-    	return $this->belongsTo(Tred::class, 'tred_id', 'id');
+        return $this->belongsTo(Tred::class);
     }
 }

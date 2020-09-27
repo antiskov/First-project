@@ -7,7 +7,7 @@
             <div class="alert alert-warning">
                 @auth
                     @if(auth()->user()->id === $board->user->id)
-                        <a href="{{route('delete-board', [$board->treds->id, $board->id])}}" class="text-danger float-right">delete</a>
+                        <a href="{{route('delete-board', [$board->tred->id, $board->id])}}" class="text-danger float-right">delete</a>
                     @endif
                 @endauth
                 <div class='float-rigth'>{{ $board->created_at }}</div>

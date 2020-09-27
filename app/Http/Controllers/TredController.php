@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Board;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreContent;
 use App\Topic;
 use App\Tred;
 
@@ -16,6 +14,7 @@ class TredController extends Controller
         return view('content.treds', [
             'treds' => $topic->load('treds')->treds,
             'topicId' => $topic->id
+            //todo IN ENGLISH PLEASE
             //запа'ятовує айді топіка щоб потім відкрити написання треду
         ]);
     }
@@ -27,29 +26,29 @@ class TredController extends Controller
 
     public function addTred(Topic $topic, Request $request)
     {
-    	$tred = new Tred($request->all());
-    	$tred->user()->associate(auth()->user());
-    	$tred->topics()->associate($topic);
-    	$tred->save();
+        $tred = new Tred($request->all());
+        $tred->user()->associate(auth()->user());
+        $tred->topic()->associate($topic);
+        $tred->save();
 
-    	return redirect()->route('treds', [$topic->id]);
+        return redirect()->route('treds', [$topic->id]);
     }
 
-    public function  deleteTred(Topic $topic, Tred $tred)
+    public function deleteTred(Topic $topic, Tred $tred)
     {
         $tred->delete();
 
         return redirect()->route('treds', [$topic->id]);
     }
 
-    public function  deleteTredForAdmin(Topic $topic, Tred $tred)
+    public function deleteTredForAdmin(Topic $topic, Tred $tred)
     {
         $tred->delete();
 
         return redirect()->route('admin-treds', [$topic->id]);
     }
 
-    public function  forceDeleteTred(Topic $topic, Tred $tred)
+    public function forceDeleteTred(Topic $topic, Tred $tred)
     {
         $tred->forceDelete();
 
@@ -68,6 +67,10 @@ class TredController extends Controller
     {
         Tred::withTrashed()->find($tred)->restore();
 
-        return  redirect()->route('admin-panel');
+        return view('admin.admin_softdeleted', [
+            'topics' => Topic::onlyTrashed()->get(),
+            'treds' => Tred::onlyTrashed()->get(),
+            'boards' => Board::onlyTrashed()->get()
+        ]);
     }
 }

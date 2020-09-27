@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Topic;
 
 Auth::routes();
 
@@ -25,6 +24,7 @@ Route::get('/topic', 'TopicController@newTopic')
     ->name('topic');
 
 Route::post('/add_topic', 'TopicController@addTopic')
+    ->middleware('auth', 'throttle:1,1')
     ->name('add-topic');
 
 Route::get('/', 'TopicController@allTopics')
@@ -45,9 +45,11 @@ Route::get('topic/{topic}', 'TredController@tredsAction')
     ->name('treds');
 
 Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
+    ->middleware('auth')
     ->name('new-tred');
 
 Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
+    ->middleware('auth', 'throttle:1,1')
     ->name('add-tred');
 
 Route::get('{topic}/tred/{tred}/delete', 'TredController@deleteTred')
@@ -69,6 +71,7 @@ Route::get('admin/tred/{tred}/', 'BoardController@boardForAdmin')
     ->name('admin-board');
 
 Route::post('tred/{tred}/board/add_board','BoardController@addBoard')
+    ->middleware('auth', 'throttle:1,1')
     ->name('add-board');
 
 Route::get(
@@ -84,25 +87,24 @@ Route::get('{tred}/{board}/forcedelete', 'BoardController@forceDeleteBoard')
     ->name('forcedelete-board');
 
 Route::post(
-	'tred/{tred}/board/{board}/add_board/',
+	'tred/{tred}/board/{board}/add_board',
 	'BoardController@addBoardQuote'
     )->name('add-quote');
 
 Route::get('/user_profile/{user}', 'UserController@userPage')
     ->name('user-page');
 
-Route::get('admin/softdeleted', 'AdminController@softdeleted')
-    ->middleware('auth', 'is_admin')
-    ->name('softdeleted');
 
-Route::get('admin/tred/{tred}/board/{board}/restore', 'BoardController@restoreBoard')
-    ->middleware('auth', 'is_admin')
-    ->name('restore-board');
 
-Route::get('admin/tred/{tred}/restore', 'TredController@restoreTred')
-    ->middleware('auth', 'is_admin')
-    ->name('restore-tred');
 
-Route::get('admin/topic/{topic}/restore', 'TopicController@restoreTopic')
-    ->middleware('auth', 'is_admin')
-    ->name('restore-topic');
+Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/topic/{topic}/restore', 'TopicController@restoreTopic')
+        ->name('restore-topic');
+    Route::get('/soft-deleted', 'AdminController@softDeleted')
+        ->name('soft-deleted');
+    Route::get('/board/{board}/restore', 'BoardController@restoreBoard')
+        ->name('restore-board');
+    Route::get('/tred/{tred}/restore', 'TredController@restoreTred')
+        ->name('restore-tred');
+
+});

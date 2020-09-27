@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Tred;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
+use App\Board;
 use App\Http\Requests\StoreContent;
 use App\Topic;
+use App\Tred;
 
 class TopicController extends Controller
 {
-	public function allTopics()
+    public function allTopics()
     {
         return view('welcome', ['data' => Topic::all()]);
     }
@@ -23,22 +21,23 @@ class TopicController extends Controller
 
     public function addTopic(StoreContent $request)
     {
-    	$topic = new Topic($request->all());
+        $topic = new Topic($request->all());
         $topic->user()->associate(auth()->user());
         $topic->save();
 
 
-    	return redirect()->route('topics');
+        return redirect()->route('topics');
     }
 
-    public function  deleteTopic($topic)
+    public function deleteTopic($topic)
     {
         Topic::destroy($topic);
+        //Tred::destroy($topic->treds);
 
         return redirect()->route('topics');
     }
 
-    public function  deleteTopicForAdmin($topic)
+    public function deleteTopicForAdmin($topic)
     {
         Topic::destroy($topic);
 
@@ -56,6 +55,10 @@ class TopicController extends Controller
     {
         Topic::withTrashed()->find($topic)->restore();
 
-        return  redirect()->route('admin-panel');
+        return view('admin.admin_softdeleted', [
+            'topics' => Topic::onlyTrashed()->get(),
+            'treds' => Tred::onlyTrashed()->get(),
+            'boards' => Board::onlyTrashed()->get()
+        ]);
     }
 }

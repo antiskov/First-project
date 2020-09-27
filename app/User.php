@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->hasMany(Tred::class);
     }
 
-    public function communs()
+    public function boards()
     {
         return $this->hasMany(Board::class);
     }
