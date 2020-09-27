@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3>Adding Answer</h3>
+        <h3>Answer</h3>
         @if (Route::has('login'))
             @auth
                 <form action="{{ route('add-answer', [$tredId, $boardId]) }}" method="post">
