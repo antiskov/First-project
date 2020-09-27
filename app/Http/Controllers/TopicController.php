@@ -3,23 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Board;
-use App\Http\Requests\StoreContent;
+use App\Http\Requests\StoreTopic;
 use App\Topic;
 use App\Tred;
 
+/**
+ * Class TopicController
+ * @package App\Http\Controllers
+ */
 class TopicController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function allTopics()
     {
         return view('welcome', ['data' => Topic::all()]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function newTopic()
     {
         return view('content.topic');
     }
 
-    public function addTopic(StoreContent $request)
+    /**
+     * @param StoreTopic $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addTopic(StoreTopic $request)
     {
         $topic = new Topic($request->all());
         $topic->user()->associate(auth()->user());
@@ -29,6 +43,10 @@ class TopicController extends Controller
         return redirect()->route('topics');
     }
 
+    /**
+     * @param $topic
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteTopic($topic)
     {
         Topic::destroy($topic);
@@ -37,6 +55,10 @@ class TopicController extends Controller
         return redirect()->route('topics');
     }
 
+    /**
+     * @param $topic
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteTopicForAdmin($topic)
     {
         Topic::destroy($topic);
@@ -44,6 +66,10 @@ class TopicController extends Controller
         return redirect()->route('admin-panel');
     }
 
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function forceDeleteTopic(Topic $topic)
     {
         $topic->forceDelete();
@@ -51,6 +77,10 @@ class TopicController extends Controller
         return redirect()->route('admin-panel');
     }
 
+    /**
+     * @param $topic
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function restoreTopic($topic)
     {
         Topic::withTrashed()->find($topic)->restore();

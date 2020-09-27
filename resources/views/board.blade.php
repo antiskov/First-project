@@ -17,6 +17,9 @@
                     <br><br>
                 <h6>{{ $board->board_item }}</h6>
                 <p class="text-danger text-rigth">{{ $board->user->name }}</p>
+                @guest
+                        <a href="{{ route('register')}}">Give an answer</a>
+                @endguest
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ route('answer', ['tred' => $tred->id, $board->id]) }}">Give an answer</a>
@@ -41,6 +44,15 @@
                 </form>
             @endauth
         @endif
+        @guest
+            <form action="{{ route('register') }}" method="get">
+                @csrf
+                <div class="form-group">
+                    <input class="form-control" type="text" required placeholder="What you intersting?" name="board_item">
+                </div>
+                <button type='submit' class="btn btn-success">Add commutication</button>
+            </form>
+        @endguest
     </div>
     @if ($errors->any())
         <div class="alert alert-danger">

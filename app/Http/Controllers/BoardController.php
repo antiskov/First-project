@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreContent;
+use App\Http\Requests\StoreBoard;
 use App\Topic;
 use App\Tred;
 use App\Board;
 
+/**
+ * Class BoardController
+ * @package App\Http\Controllers
+ */
 class BoardController extends Controller
 {
+    /**
+     * @param Tred $tred
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function board(Tred $tred)
     {
 
@@ -18,6 +26,10 @@ class BoardController extends Controller
         ]);
     }
 
+    /**
+     * @param Tred $tred
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function boardForAdmin(Tred $tred)
     {
         return view('admin.admin_boards', [
@@ -26,7 +38,12 @@ class BoardController extends Controller
         ]);
     }
 
-    public function addBoard(Tred $tred, StoreContent $request)
+    /**
+     * @param Tred $tred
+     * @param StoreBoard $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addBoard(Tred $tred, StoreBoard $request)
     {
         $board = new Board($request->all());
         $board->user()->associate(auth()->user());
@@ -37,6 +54,11 @@ class BoardController extends Controller
 
     }
 
+    /**
+     * @param Tred $tred
+     * @param Board $board
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function boardAnswer(Tred $tred, Board $board)
     {
         return view('quote', [
@@ -45,6 +67,12 @@ class BoardController extends Controller
         ]);
     }
 
+    /**
+     * @param Tred $tred
+     * @param Board $board
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function deleteBoard(Tred $tred, Board $board)
     {
         $board->delete();
@@ -52,6 +80,11 @@ class BoardController extends Controller
         return redirect()->route('board', [$tred->id]);
     }
 
+    /**
+     * @param Tred $tred
+     * @param Board $board
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function forceDeleteBoard(Tred $tred, Board $board)
     {
         $board->forceDelete();
@@ -59,6 +92,10 @@ class BoardController extends Controller
         return redirect()->route('admin-board', [$tred->id]);
     }
 
+    /**
+     * @param $board
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function restoreBoard($board)
     {
         Board::withTrashed()->find($board)->restore();

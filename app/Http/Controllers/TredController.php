@@ -3,28 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Board;
-use App\Http\Requests\StoreContent;
+use App\Http\Requests\StoreTred;
 use App\Topic;
 use App\Tred;
 
+/**
+ * Class TredController
+ * @package App\Http\Controllers
+ */
 class TredController extends Controller
 {
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function tredsAction(Topic $topic)
     {
         return view('content.treds', [
             'treds' => $topic->load('treds')->treds,
             'topicId' => $topic->id
-            //todo IN ENGLISH PLEASE
-            //запа'ятовує айді топіка щоб потім відкрити написання треду
         ]);
     }
 
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function newTred(Topic $topic)
     {
         return view('content.new_tred', ['topicId' => $topic->id]);
     }
 
-    public function addTred(Topic $topic, StoreContent $request)
+    /**
+     * @param Topic $topic
+     * @param StoreTred $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function addTred(Topic $topic, StoreTred $request)
     {
         $tred = new Tred($request->all());
         $tred->user()->associate(auth()->user());
@@ -34,6 +49,12 @@ class TredController extends Controller
         return redirect()->route('treds', [$topic->id]);
     }
 
+    /**
+     * @param Topic $topic
+     * @param Tred $tred
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function deleteTred(Topic $topic, Tred $tred)
     {
         $tred->delete();
@@ -41,6 +62,12 @@ class TredController extends Controller
         return redirect()->route('treds', [$topic->id]);
     }
 
+    /**
+     * @param Topic $topic
+     * @param Tred $tred
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function deleteTredForAdmin(Topic $topic, Tred $tred)
     {
         $tred->delete();
@@ -48,6 +75,11 @@ class TredController extends Controller
         return redirect()->route('admin-treds', [$topic->id]);
     }
 
+    /**
+     * @param Topic $topic
+     * @param Tred $tred
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function forceDeleteTred(Topic $topic, Tred $tred)
     {
         $tred->forceDelete();
@@ -55,6 +87,10 @@ class TredController extends Controller
         return redirect()->route('admin-treds', [$topic->id]);
     }
 
+    /**
+     * @param Topic $topic
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function tredsActionForAdmin(Topic $topic)
     {
         return view('admin.admin_treds', [
@@ -63,6 +99,10 @@ class TredController extends Controller
         ]);
     }
 
+    /**
+     * @param $tred
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function restoreTred($tred)
     {
         Tred::withTrashed()->find($tred)->restore();

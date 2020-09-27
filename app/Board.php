@@ -35,6 +35,9 @@ class Board extends Model
         return $this->belongsTo(Tred::class);
     }
 
+    /**
+     * SoftDelete child with parent
+     */
     protected static function boot()
     {
         parent::boot();
@@ -48,6 +51,9 @@ class Board extends Model
         });
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function answers()
     {
         return $this->hasMany(Answer::class);
