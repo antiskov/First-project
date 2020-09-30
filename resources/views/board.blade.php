@@ -7,7 +7,7 @@
             <div class="alert alert-warning">
                 @auth
                     @if(auth()->user()->id === $board->user->id)
-                        <a href="{{route('delete-board', [$board->tred->id, $board->id])}}" class="text-danger float-right">delete</a>
+                        <a href="{{route('delete-board', [$board->thread->id, $board->id])}}" class="text-danger float-right">delete</a>
                     @endif
                 @endauth
                 <div class='float-rigth'>{{ $board->created_at }}</div>
@@ -20,18 +20,16 @@
                 @guest
                         <a href="{{ route('register')}}">Give an answer</a>
                 @endguest
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ route('answer', ['tred' => $tred->id, $board->id]) }}">Give an answer</a>
-                    @endauth
-                @endif
+                @auth
+                    <a href="{{ route('answer', [$thread->id, $board->id]) }}">Give an answer</a>
+                @endauth
                 @foreach($board->answers as $answer)
                     <div class="alert alert-info">
                         <p class="text-danger">{{$answer->user->name}}</p>
                         <p class="text-info">{{$answer->answer_on_answer}}</p>
                         <p>{{$answer->answer_item}}</p>
                         @auth
-                            <a href="{{ route('answer-on', ['tred' => $tred->id, $board->id, $answer->id]) }}">Answer on answer</a>
+                            <a href="{{ route('answer-on', [$thread->id, $board->id, $answer->id]) }}">Answer on answer</a>
                         @endauth
                     </div>
 
@@ -40,7 +38,7 @@
         @endforeach
         @if (Route::has('login'))
             @auth
-                <form action="{{ route('add-board', ['topic' => $tred->content_id, 'tred' => $tred->id]) }}" method="post">
+                <form action="{{ route('add-board', ['topic' => $thread->content_id, 'thread' => $thread->id]) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <input class="form-control" type="text" required placeholder="What you intersting?" name="board_item">

@@ -17,7 +17,7 @@ class ThreadController extends Controller
      * @param Topic $topic
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function tredsAction(Topic $topic)
+    public function getAll(Topic $topic)
     {
         return view('content.treds', [
             'threads' => $topic->load('threads')->threads,
@@ -29,7 +29,7 @@ class ThreadController extends Controller
      * @param Topic $topic
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function newTred(Topic $topic)
+    public function setNew(Topic $topic)
     {
         return view('content.new_tred', ['topicId' => $topic->id]);
     }
@@ -39,7 +39,7 @@ class ThreadController extends Controller
      * @param StoreThread $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addTred(Topic $topic, StoreThread $request)
+    public function set(Topic $topic, StoreThread $request)
     {
         $thread = new Thread($request->all());
         $thread->user()->associate(auth()->user());
@@ -55,7 +55,7 @@ class ThreadController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function deleteTred(Topic $topic, Thread $tred)
+    public function delete(Topic $topic, Thread $tred)
     {
         $tred->delete();
 
@@ -68,7 +68,7 @@ class ThreadController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function deleteTredForAdmin(Topic $topic, Thread $tred)
+    public function deleteForAdmin(Topic $topic, Thread $tred)
     {
         $tred->delete();
 
@@ -80,7 +80,7 @@ class ThreadController extends Controller
      * @param Thread $tred
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function forceDeleteTred(Topic $topic, Thread $tred)
+    public function forceDelete(Topic $topic, Thread $tred)
     {
         $tred->forceDelete();
 
@@ -91,7 +91,7 @@ class ThreadController extends Controller
      * @param Topic $topic
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function tredsActionForAdmin(Topic $topic)
+    public function getAllForAdmin(Topic $topic)
     {
         return view('admin.admin_treds', [
             'treds' => $topic->load('treds')->treds,
@@ -103,7 +103,7 @@ class ThreadController extends Controller
      * @param $tred
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function restoreTred($tred)
+    public function restore($tred)
     {
         Thread::withTrashed()->find($tred)->restore();
 

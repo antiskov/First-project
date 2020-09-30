@@ -60,7 +60,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function treds()
+    public function threads()
     {
         return $this->hasMany(Thread::class);
     }

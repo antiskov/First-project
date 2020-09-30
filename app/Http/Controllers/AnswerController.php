@@ -18,11 +18,11 @@ class AnswerController extends Controller
      * @param Board $board
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function answer(Thread $tred, Board $board)
+    public function answer(Thread $thread, Board $board)
     {
         return view('answer ', [
             'boardId' => $board->id,
-            'tredId' => $tred->id
+            'tredId' => $thread->id
         ]);
     }
 
@@ -32,7 +32,7 @@ class AnswerController extends Controller
      * @param StoreAnswer $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addAnswer(Thread $tred, Board $board, StoreAnswer $request)
+    public function addAnswer(Thread $thread, Board $board, StoreAnswer $request)
     {
         $answer = new Answer($request->all());
         $answer->user()->associate(auth()->user());

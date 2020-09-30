@@ -23,11 +23,11 @@
             <h4>dont have own topics</h4>
         </div>
     @endif
-    @if(Auth::user()->treds->count() > 0)
+    @if(Auth::user()->threads->count() > 0)
         <h3>treds</h3>
-        @foreach(Auth::user()->treads as $tred)
+        @foreach(Auth::user()->threads as $thread)
             <div class="alert alert-success">
-                <p>{{ $tred->tred_item }}</p>
+                <p>{{ $thread->thread_item }}</p>
             </div>
         @endforeach
     @else

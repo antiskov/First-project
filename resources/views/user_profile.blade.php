@@ -5,11 +5,11 @@
         <img src="{{ asset('/storage/images/'.$user->avatar)}}" alt="avatar" width='100' height="100">
         <br>
         <h1>{{ $user->name }}</h1>
-        @if($user->treds->count() > 0)
+        @if($user->threads->count() > 0)
         <h3>treds</h3>
-            @foreach($user->treds as $tred)
+            @foreach($user->threads as $thread)
                 <div class="alert alert-success">
-                    <p>{{ $tred->tred_item }}</p>
+                    <p>{{ $thread->thread_item }}</p>
                 </div>
             @endforeach
         @else
@@ -18,10 +18,10 @@
             </div>
         @endif
         <h3>messeges</h3>
-        @foreach($user->communs as $commun)
-            @if($commun)
+        @foreach($user->boards as $board)
+            @if($board)
             <div class="alert alert-warning">
-                <p>{{ $commun->commun_item }}</p>
+                <p>{{ $board->board_item }}</p>
             </div>
             @endif
         @endforeach
