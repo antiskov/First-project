@@ -11,10 +11,10 @@
             </div>
         @endforeach
         <h3>Treds</h3>
-        @foreach($treds as $tred)
+        @foreach($threads as $thread)
             <div class="alert alert-success">
-                <a href="{{ route('admin-board', [$tred->id]) }}">{{ $tred->tred_item }}</a>
-                <a href="{{route('restore-tred', [$tred->id])}}" class="text-primary float-right">Restore</a>
+                <a href="{{ route('admin-board', [$thread->id]) }}">{{ $thread->thread_item }}</a>
+                <a href="{{route('restore-thread', [$thread->id])}}" class="text-primary float-right">Restore</a>
             </div>
         @endforeach
         <h3>Boards</h3>

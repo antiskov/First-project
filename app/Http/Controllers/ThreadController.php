@@ -6,6 +6,7 @@ use App\Board;
 use App\Http\Requests\StoreThread;
 use App\Topic;
 use App\Thread;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class ThreadController
@@ -37,7 +38,7 @@ class ThreadController extends Controller
     /**
      * @param Topic $topic
      * @param StoreThread $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function set(Topic $topic, StoreThread $request)
     {
@@ -52,7 +53,7 @@ class ThreadController extends Controller
     /**
      * @param Topic $topic
      * @param Thread $tred
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      * @throws \Exception
      */
     public function delete(Topic $topic, Thread $thread)
@@ -65,7 +66,7 @@ class ThreadController extends Controller
     /**
      * @param Topic $topic
      * @param Thread $tred
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      * @throws \Exception
      */
     public function deleteForAdmin(Topic $topic, Thread $tred)
@@ -78,7 +79,7 @@ class ThreadController extends Controller
     /**
      * @param Topic $topic
      * @param Thread $tred
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function forceDelete(Topic $topic, Thread $tred)
     {
@@ -93,23 +94,23 @@ class ThreadController extends Controller
      */
     public function getAllForAdmin(Topic $topic)
     {
-        return view('admin.admin_treds', [
-            'treds' => $topic->load('treds')->treds,
+        return view('admin.admin_threads', [
+            'threads' => $topic->load('threads')->threads,
             'topicId' => $topic->id
         ]);
     }
 
     /**
-     * @param $tred
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param $thread
+     * @return RedirectResponse
      */
-    public function restore($tred)
+    public function restore($thread)
     {
-        Thread::withTrashed()->find($tred)->restore();
+        Thread::withTrashed()->find($thread)->restore();
 
-        return view('admin.admin_softdeleted', [
+        return redirect()->route('soft-deleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Thread::onlyTrashed()->get(),
+            'threads' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

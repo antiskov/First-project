@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Thread::onlyTrashed()->get(),
+            'threads' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

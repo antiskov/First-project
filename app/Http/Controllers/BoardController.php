@@ -6,8 +6,11 @@ use App\Http\Requests\StoreBoard;
 use App\Topic;
 use App\Thread;
 use App\Board;
+use Exception;
+use Illuminate\Contracts\Foundation\Application as ApplicationAlias;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\HttpRedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class BoardController
@@ -17,7 +20,7 @@ class BoardController extends Controller
 {
     /**
      * @param Thread $tred
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return ApplicationAlias|Factory|View
      */
     public function getAll(Thread $thread)
     {
@@ -29,14 +32,14 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Thread $tred
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param Thread $thread
+     * @return ApplicationAlias|Factory|View
      */
     public function getAllForAdmin(Thread $thread)
     {
         return view('admin.admin_boards', [
             'boards' => $thread->load('boards')->boards,
-            'thread' => $thread,
+            'thread' => $thread
         ]);
     }
 
@@ -60,7 +63,7 @@ class BoardController extends Controller
      * @param Thread $thread
      * @param Board $board
      * @return HttpRedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function delete(Thread $thread, Board $board)
     {
@@ -84,13 +87,13 @@ class BoardController extends Controller
 
     /**
      * @param $board
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return RedirectResponse
      */
     public function restore($board)
     {
         Board::withTrashed()->find($board)->restore();
 
-        return view('admin.admin_softdeleted', [
+        return redirect()->route('soft-deleted', [
             'topics' => Topic::onlyTrashed()->get(),
             'threads' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()

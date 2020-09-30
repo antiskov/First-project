@@ -6,6 +6,7 @@ use App\Board;
 use App\Http\Requests\StoreTopic;
 use App\Topic;
 use App\Thread;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class TopicController
@@ -31,7 +32,7 @@ class TopicController extends Controller
 
     /**
      * @param StoreTopic $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function set(StoreTopic $request)
     {
@@ -45,7 +46,7 @@ class TopicController extends Controller
 
     /**
      * @param $topic
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function delete($topic)
     {
@@ -56,7 +57,7 @@ class TopicController extends Controller
 
     /**
      * @param $topic
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function deleteForAdmin($topic)
     {
@@ -67,7 +68,7 @@ class TopicController extends Controller
 
     /**
      * @param Topic $topic
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function forceDelete(Topic $topic)
     {
@@ -78,15 +79,15 @@ class TopicController extends Controller
 
     /**
      * @param $topic
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return RedirectResponse
      */
-    public function restoreTopic($topic)
+    public function restore($topic)
     {
         Topic::withTrashed()->find($topic)->restore();
 
-        return view('admin.admin_softdeleted', [
+        return redirect()->route('soft-deleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Thread::onlyTrashed()->get(),
+            'threads' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }
