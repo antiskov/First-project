@@ -28,7 +28,7 @@
                 @foreach($board->answers as $answer)
                     <div class="alert alert-info">
                         <p class="text-danger">{{$answer->user->name}}</p>
-
+                        <p class="text-info">{{$answer->answer_on_answer}}</p>
                         <p>{{$answer->answer_item}}</p>
                         @auth
                             <a href="{{ route('answer-on', ['tred' => $tred->id, $board->id, $answer->id]) }}">Answer on answer</a>

@@ -22,7 +22,7 @@ Route::post('/set', 'TopicController@set')
 Route::get('/', 'TopicController@getAll')
     ->name('topics');
 
-Route::get('{topic}', "TopicController@delete")
+Route::get('{topic}/delete', "TopicController@delete")
     ->name('delete-topic');
 
 Route::delete('{topic}/force-delete', 'TopicController@forceDelete')
@@ -80,7 +80,7 @@ Route::get(
 Route::post(
     '{tred}/{board}/{answer}',
     'AnswerController@answerOnAnswer')
-    ->middleware('auth', 'throttle:4,1')
+    ->middleware('auth', 'throttle:7,1')
     ->name('answer-on-answer');
 
 Route::get('/user_profile/{user}', 'UserController@userPage')
@@ -95,14 +95,14 @@ Route::prefix('admin')->middleware(['auth', 'is_admin', 'throttle:20,1'])->group
         ->name('restore-board');
     Route::get('/tred/{tred}/restore', 'TredController@restoreTred')
         ->name('restore-tred');
-    Route::get('/tred/{tred}/', 'BoardController@boardForAdmin')
+    Route::get('/t/{tred}/b', 'BoardController@boardForAdmin')
         ->name('admin-board');
     Route::get('/{topic}/tred/{tred}/delete', 'TredController@deleteTredForAdmin')
         ->name('delete-tred-admin');
-    Route::get('/{topic}/delete', 'TopicController@deleteTopicForAdmin')
+    Route::get('/{topic}/delete/s', 'TopicController@deleteForAdmin')
         ->name('delete-topic-admin');
     Route::get('/', 'AdminController@admin')
         ->name('admin-panel');
-    Route::get('/topic/{topic}', 'TredController@tredsActionForAdmin')
+    Route::get('/topic/{topic}/', 'TredController@tredsActionForAdmin')
         ->name('admin-treds');
 });
