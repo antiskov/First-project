@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Board;
 use App\Http\Requests\StoreAnswer;
-use App\Tred;
+use App\Thread;
 
 /**
  * Class AnswerController
@@ -14,11 +14,11 @@ use App\Tred;
 class AnswerController extends Controller
 {
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param Board $board
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function answer(Tred $tred, Board $board)
+    public function answer(Thread $tred, Board $board)
     {
         return view('answer ', [
             'boardId' => $board->id,
@@ -27,12 +27,12 @@ class AnswerController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param Board $board
      * @param StoreAnswer $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addAnswer(Tred $tred, Board $board, StoreAnswer $request)
+    public function addAnswer(Thread $tred, Board $board, StoreAnswer $request)
     {
         $answer = new Answer($request->all());
         $answer->user()->associate(auth()->user());
@@ -42,7 +42,7 @@ class AnswerController extends Controller
         return redirect()->route('board', [$tred->id]);
     }
 
-    public function answerOn(Tred $tred, Board $board, Answer $answer)
+    public function answerOn(Thread $tred, Board $board, Answer $answer)
     {
         return view('answer_on_answer ', [
             'boardId' => $board->id,
@@ -51,7 +51,7 @@ class AnswerController extends Controller
         ]);
     }
 
-    public function answerOnAnswer(Tred $tred, Board $board, Answer $answer, StoreAnswer $request)
+    public function answerOnAnswer(Thread $tred, Board $board, Answer $answer, StoreAnswer $request)
     {
         $answerOnAnswer = new Answer($request->all());
         $answerOnAnswer->answer_on_answer = $answer->answer_item;

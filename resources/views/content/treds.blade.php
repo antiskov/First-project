@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <h3>Treds</h3>
-    @foreach($treds as $tred)
+    @foreach($threads as $thread)
             <div class="alert alert-success">
-                <a href="{{ route('board', [$tred->id]) }}">{{ $tred->tred_item }}</a>
+                <a href="{{ route('board', [$thread->id]) }}">{{ $thread->thread_item }}</a>
             @auth
-                @if(auth()->user()->id === $tred->user->id)
-                    <a href="{{route('delete-tred', [$topicId, $tred->id])}}" class="text-danger float-right">delete</a>
+                @if(auth()->user()->id === $thread->user->id)
+                    <a href="{{route('delete-tred', [$topicId, $thread->id])}}" class="text-danger float-right">delete</a>
                 @endif
             @endauth
             </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\{Board, Topic, Tred};
+use App\{Board, Topic, Thread};
 
 /**
  * Class AdminController
@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Tred::onlyTrashed()->get(),
+            'treds' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

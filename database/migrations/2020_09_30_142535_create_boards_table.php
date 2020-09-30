@@ -18,9 +18,9 @@ class CreateBoardsTable extends Migration
             $table->text('board_item');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('tred_id')->unsigned();
-            $table->foreign('tred_id')->references('id')
-                ->on('treds')
+            $table->bigInteger('thread_id')->unsigned();
+            $table->foreign('thread_id')->references('id')
+                ->on('threads')
                 ->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

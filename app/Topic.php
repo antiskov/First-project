@@ -49,9 +49,9 @@ class Topic extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function treds()
+    public function threads()
     {
-    	return $this->hasMany(Tred::class, 'topic_id', 'id');
+    	return $this->hasMany(Thread::class, 'topic_id', 'id');
     }
 
 }

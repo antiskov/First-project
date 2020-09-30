@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Board;
 use App\Http\Requests\StoreTopic;
 use App\Topic;
-use App\Tred;
+use App\Thread;
 
 /**
  * Class TopicController
@@ -86,7 +86,7 @@ class TopicController extends Controller
 
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Tred::onlyTrashed()->get(),
+            'treds' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

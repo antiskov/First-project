@@ -25,25 +25,21 @@ Route::get('/', 'TopicController@getAll')
 Route::get('{topic}/delete', "TopicController@delete")
     ->name('delete-topic');
 
-Route::delete('{topic}/force-delete', 'TopicController@forceDelete')
-    ->middleware('auth', 'is_admin')
-    ->name('forcedelete-topic');
-
-Route::get('topic/{topic}', 'TredController@tredsAction')
+Route::get('topic/{topic}', 'ThreadController@tredsAction')
     ->name('treds');
 
-Route::get('topic/{topic}/treds/new-thread', 'TredController@newTred')
+Route::get('topic/{topic}/treds/new-thread', 'ThreadController@newTred')
     ->middleware('auth')
     ->name('new-tred');
 
-Route::post('/{topic}/add-thread', 'TredController@addTred')
+Route::post('/{topic}/add-thread', 'ThreadController@addTred')
     ->middleware('auth', 'throttle:4,1')
     ->name('add-tred');
 
-Route::get('{topic}/tred/{tred}/', 'TredController@deleteTred')
+Route::get('{topic}/tred/{tred}/', 'ThreadController@deleteTred')
     ->name('delete-tred');
 
-Route::get('{topic}/tred/{tred}/forcedelete', 'TredController@forceDeleteTred')
+Route::get('{topic}/tred/{tred}/forcedelete', 'ThreadController@forceDeleteTred')
     ->middleware('auth', 'is_admin')
     ->name('forcedelete-tred');
 
@@ -93,16 +89,18 @@ Route::prefix('admin')->middleware(['auth', 'is_admin', 'throttle:20,1'])->group
         ->name('soft-deleted');
     Route::get('/board/{board}/restore', 'BoardController@restoreBoard')
         ->name('restore-board');
-    Route::get('/tred/{tred}/restore', 'TredController@restoreTred')
+    Route::get('/tred/{tred}/restore', 'ThreadController@restoreTred')
         ->name('restore-tred');
     Route::get('/t/{tred}/b', 'BoardController@boardForAdmin')
         ->name('admin-board');
-    Route::get('/{topic}/tred/{tred}/delete', 'TredController@deleteTredForAdmin')
+    Route::get('/{topic}/tred/{tred}/delete', 'ThreadController@deleteTredForAdmin')
         ->name('delete-tred-admin');
     Route::get('/{topic}/delete/s', 'TopicController@deleteForAdmin')
         ->name('delete-topic-admin');
     Route::get('/', 'AdminController@admin')
         ->name('admin-panel');
-    Route::get('/topic/{topic}/', 'TredController@tredsActionForAdmin')
+    Route::get('/topic/{topic}/', 'ThreadController@tredsActionForAdmin')
         ->name('admin-treds');
+    Route::get('/{topic}/force-delete', 'TopicController@forceDelete')
+        ->name('forcedelete-topic');
 });

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Board;
-use App\Http\Requests\StoreTred;
+use App\Http\Requests\StoreThread;
 use App\Topic;
-use App\Tred;
+use App\Thread;
 
 /**
- * Class TredController
+ * Class ThreadController
  * @package App\Http\Controllers
  */
-class TredController extends Controller
+class ThreadController extends Controller
 {
     /**
      * @param Topic $topic
@@ -20,7 +20,7 @@ class TredController extends Controller
     public function tredsAction(Topic $topic)
     {
         return view('content.treds', [
-            'treds' => $topic->load('treds')->treds,
+            'threads' => $topic->load('threads')->threads,
             'topicId' => $topic->id
         ]);
     }
@@ -36,26 +36,26 @@ class TredController extends Controller
 
     /**
      * @param Topic $topic
-     * @param StoreTred $request
+     * @param StoreThread $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addTred(Topic $topic, StoreTred $request)
+    public function addTred(Topic $topic, StoreThread $request)
     {
-        $tred = new Tred($request->all());
-        $tred->user()->associate(auth()->user());
-        $tred->topic()->associate($topic);
-        $tred->save();
+        $thread = new Thread($request->all());
+        $thread->user()->associate(auth()->user());
+        $thread->topic()->associate($topic);
+        $thread->save();
 
         return redirect()->route('treds', [$topic->id]);
     }
 
     /**
      * @param Topic $topic
-     * @param Tred $tred
+     * @param Thread $tred
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function deleteTred(Topic $topic, Tred $tred)
+    public function deleteTred(Topic $topic, Thread $tred)
     {
         $tred->delete();
 
@@ -64,11 +64,11 @@ class TredController extends Controller
 
     /**
      * @param Topic $topic
-     * @param Tred $tred
+     * @param Thread $tred
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function deleteTredForAdmin(Topic $topic, Tred $tred)
+    public function deleteTredForAdmin(Topic $topic, Thread $tred)
     {
         $tred->delete();
 
@@ -77,10 +77,10 @@ class TredController extends Controller
 
     /**
      * @param Topic $topic
-     * @param Tred $tred
+     * @param Thread $tred
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function forceDeleteTred(Topic $topic, Tred $tred)
+    public function forceDeleteTred(Topic $topic, Thread $tred)
     {
         $tred->forceDelete();
 
@@ -105,11 +105,11 @@ class TredController extends Controller
      */
     public function restoreTred($tred)
     {
-        Tred::withTrashed()->find($tred)->restore();
+        Thread::withTrashed()->find($tred)->restore();
 
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Tred::onlyTrashed()->get(),
+            'treds' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

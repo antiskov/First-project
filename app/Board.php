@@ -30,9 +30,9 @@ class Board extends Model
     /**
      * @return BelongsTo
      */
-    public function tred()
+    public function thread()
     {
-        return $this->belongsTo(Tred::class);
+        return $this->belongsTo(Thread::class);
     }
 
     /**

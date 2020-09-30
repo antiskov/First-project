@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBoard;
 use App\Topic;
-use App\Tred;
+use App\Thread;
 use App\Board;
 
 /**
@@ -14,10 +14,10 @@ use App\Board;
 class BoardController extends Controller
 {
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function board(Tred $tred)
+    public function board(Thread $tred)
     {
 
         return view('board', [
@@ -27,10 +27,10 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function boardForAdmin(Tred $tred)
+    public function boardForAdmin(Thread $tred)
     {
         return view('admin.admin_boards', [
             'boards' => $tred->load('boards')->boards,
@@ -39,11 +39,11 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param StoreBoard $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addBoard(Tred $tred, StoreBoard $request)
+    public function addBoard(Thread $tred, StoreBoard $request)
     {
         $board = new Board($request->all());
         $board->user()->associate(auth()->user());
@@ -55,11 +55,11 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param Board $board
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function boardAnswer(Tred $tred, Board $board)
+    public function boardAnswer(Thread $tred, Board $board)
     {
         return view('quote', [
             'boardId' => $board->id,
@@ -68,12 +68,12 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param Board $board
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function deleteBoard(Tred $tred, Board $board)
+    public function deleteBoard(Thread $tred, Board $board)
     {
         $board->delete();
 
@@ -81,11 +81,11 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Tred $tred
+     * @param Thread $tred
      * @param Board $board
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function forceDeleteBoard(Tred $tred, Board $board)
+    public function forceDeleteBoard(Thread $tred, Board $board)
     {
         $board->forceDelete();
 
@@ -102,7 +102,7 @@ class BoardController extends Controller
 
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            'treds' => Tred::onlyTrashed()->get(),
+            'treds' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

@@ -25,7 +25,7 @@
     @endif
     @if(Auth::user()->treds->count() > 0)
         <h3>treds</h3>
-        @foreach(Auth::user()->treds as $tred)
+        @foreach(Auth::user()->treads as $tred)
             <div class="alert alert-success">
                 <p>{{ $tred->tred_item }}</p>
             </div>

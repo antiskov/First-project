@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTred extends FormRequest
+class StoreThread extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreTred extends FormRequest
     public function rules()
     {
         return [
-            'tred_item' => [
+            'thread_item' => [
                 'required',
                 'string',
                 'min:3',

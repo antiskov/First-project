@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Tred
+ * Class Thread
  * @package App
  */
-class Tred extends Model
+class Thread extends Model
 {
     /**
      *
@@ -19,7 +19,7 @@ class Tred extends Model
     /**
      * @var string[]
      */
-    public $fillable = ['tred_item'];
+    public $fillable = ['thread_item'];
     /**
      * @var string[]
      */

@@ -62,7 +62,7 @@ class User extends Authenticatable
      */
     public function treds()
     {
-        return $this->hasMany(Tred::class);
+        return $this->hasMany(Thread::class);
     }
 
     /**

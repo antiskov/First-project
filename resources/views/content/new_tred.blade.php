@@ -8,10 +8,10 @@
     	<form action="{{ route('add-tred', $topicId) }}" method="post">
     		@csrf
     		<div class="form-group">
-    		    <input class="form-control" type="text" required placeholder="What you intersting?" name="tred_item">
+    		    <input class="form-control" type="text" required placeholder="What you intersting?" name="thread_item">
   		    </div>
     		<button type='submit' class="btn btn-success">Add tred</button>
-    	</form>    	
+    	</form>
       @endauth
     @endif
 </div>
