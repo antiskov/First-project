@@ -15,11 +15,9 @@ class CreateTredsTable extends Migration
     {
         Schema::create('treds', function (Blueprint $table) {
             $table->id();
+            $table->string('tred_item');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-
-            $table->string('tred_item');
-
             $table->bigInteger('topic_id')->unsigned();
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->softDeletes();

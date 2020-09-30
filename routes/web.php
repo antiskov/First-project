@@ -11,36 +11,36 @@ Route::get('/home', 'ProfileController@index');
 Route::post('profile_image', 'ProfileController@profileImage')
     ->name('profile-image');
 
-Route::get('/topic', 'TopicController@newTopic')
+Route::get('/set-new', 'TopicController@setNew')
     ->middleware('auth')
     ->name('topic');
 
-Route::post('/add_topic', 'TopicController@addTopic')
+Route::post('/set', 'TopicController@set')
     ->middleware('auth', 'throttle:4,1')
     ->name('add-topic');
 
-Route::get('/', 'TopicController@allTopics')
+Route::get('/', 'TopicController@getAll')
     ->name('topics');
 
-Route::get('{topic}/delete', 'TopicController@deleteTopic')
+Route::get('{topic}', "TopicController@delete")
     ->name('delete-topic');
 
-Route::get('{topic}/forcedelete', 'TopicController@forceDeleteTopic')
+Route::delete('{topic}/force-delete', 'TopicController@forceDelete')
     ->middleware('auth', 'is_admin')
     ->name('forcedelete-topic');
 
 Route::get('topic/{topic}', 'TredController@tredsAction')
     ->name('treds');
 
-Route::get('topic/{topic}/treds/new_tred', 'TredController@newTred')
+Route::get('topic/{topic}/treds/new-thread', 'TredController@newTred')
     ->middleware('auth')
     ->name('new-tred');
 
-Route::post('topic/{topic}/treds/new_tred/add_tred', 'TredController@addTred')
+Route::post('/{topic}/add-thread', 'TredController@addTred')
     ->middleware('auth', 'throttle:4,1')
     ->name('add-tred');
 
-Route::get('{topic}/tred/{tred}/delete', 'TredController@deleteTred')
+Route::get('{topic}/tred/{tred}/', 'TredController@deleteTred')
     ->name('delete-tred');
 
 Route::get('{topic}/tred/{tred}/forcedelete', 'TredController@forceDeleteTred')
@@ -50,7 +50,7 @@ Route::get('{topic}/tred/{tred}/forcedelete', 'TredController@forceDeleteTred')
 Route::get('/tred/{tred}/', 'BoardController@board')
     ->name('board');
 
-Route::post('tred/{tred}/board/add_board','BoardController@addBoard')
+Route::post('tred/{tred}/board/add-board','BoardController@addBoard')
     ->middleware('auth', 'throttle:4,1')
     ->name('add-board');
 
@@ -63,14 +63,25 @@ Route::get('{tred}/{board}/forcedelete', 'BoardController@forceDeleteBoard')
 
 Route::get(
     'tred/{tred}/board/{board}/answer',
-    'AnswerController@answer'
-)->name('answer');
+    'AnswerController@answer')
+    ->name('answer');
 
 Route::post(
-	'tred/{tred}/board/{board}/add_board',
-	'AnswerController@addAnswer')
-    ->middleware('auth', 'throttle:2,1')
+    'tred/{tred}/board/{board}/add-answer',
+    'AnswerController@addAnswer')
+    ->middleware('auth', 'throttle:4,1')
     ->name('add-answer');
+
+Route::get(
+    '/{tred}//{board}/{answer}',
+    'AnswerController@answerOn')
+    ->name('answer-on');
+
+Route::post(
+    '{tred}/{board}/{answer}',
+    'AnswerController@answerOnAnswer')
+    ->middleware('auth', 'throttle:4,1')
+    ->name('answer-on-answer');
 
 Route::get('/user_profile/{user}', 'UserController@userPage')
     ->name('user-page');

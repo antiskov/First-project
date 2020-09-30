@@ -41,4 +41,24 @@ class AnswerController extends Controller
 
         return redirect()->route('board', [$tred->id]);
     }
+
+    public function answerOn(Tred $tred, Board $board, Answer $answer)
+    {
+        return view('answer_on_answer ', [
+            'boardId' => $board->id,
+            'tredId' => $tred->id,
+            'answerId' => $answer->id
+        ]);
+    }
+
+    public function answerOnAnswer(Tred $tred, Board $board, Answer $answer, StoreAnswer $request)
+    {
+        $answerOnAnswer = new Answer($request->all());
+        $answerOnAnswer->answer_on_answer = $answer->answer_item;
+        $answerOnAnswer->user()->associate(auth()->user());
+        $answerOnAnswer->board()->associate($board);
+        $answerOnAnswer->save();
+
+        return redirect()->route('board', [$tred->id]);
+    }
 }

@@ -16,7 +16,7 @@ class TopicController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function allTopics()
+    public function getAll()
     {
         return view('welcome', ['data' => Topic::all()]);
     }
@@ -24,7 +24,7 @@ class TopicController extends Controller
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function newTopic()
+    public function setNew()
     {
         return view('content.topic');
     }
@@ -33,7 +33,7 @@ class TopicController extends Controller
      * @param StoreTopic $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addTopic(StoreTopic $request)
+    public function set(StoreTopic $request)
     {
         $topic = new Topic($request->all());
         $topic->user()->associate(auth()->user());
@@ -47,10 +47,9 @@ class TopicController extends Controller
      * @param $topic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deleteTopic($topic)
+    public function delete($topic)
     {
         Topic::destroy($topic);
-        //Tred::destroy($topic->treds);
 
         return redirect()->route('topics');
     }
@@ -59,7 +58,7 @@ class TopicController extends Controller
      * @param $topic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function deleteTopicForAdmin($topic)
+    public function deleteForAdmin($topic)
     {
         Topic::destroy($topic);
 
@@ -70,7 +69,7 @@ class TopicController extends Controller
      * @param Topic $topic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function forceDeleteTopic(Topic $topic)
+    public function forceDelete(Topic $topic)
     {
         $topic->forceDelete();
 

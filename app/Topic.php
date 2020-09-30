@@ -11,10 +11,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Topic extends Model
 {
-    /**
-     *
-     */
     use SoftDeletes;
+
+    /**
+     * SoftDelete child with parent
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($topics)
+        {
+            foreach ($topics->treds()->get() as $tred)
+            {
+                $tred->delete();
+            }
+        });
+    }
 
     /**
      * @var string[]
@@ -31,22 +44,6 @@ class Topic extends Model
     public function user()
     {
     	return $this->belongsTo(User::class);
-    }
-
-    /**
-     * SoftDelete child with parent
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::deleting(function($topics)
-        {
-            foreach ($topics->treds()->get() as $tred)
-            {
-                $tred->delete();
-            }
-        });
     }
 
     /**

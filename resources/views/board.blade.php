@@ -28,8 +28,13 @@
                 @foreach($board->answers as $answer)
                     <div class="alert alert-info">
                         <p class="text-danger">{{$answer->user->name}}</p>
+
                         <p>{{$answer->answer_item}}</p>
+                        @auth
+                            <a href="{{ route('answer-on', ['tred' => $tred->id, $board->id, $answer->id]) }}">Answer on answer</a>
+                        @endauth
                     </div>
+
                 @endforeach
             </div>
         @endforeach
@@ -40,7 +45,7 @@
                     <div class="form-group">
                         <input class="form-control" type="text" required placeholder="What you intersting?" name="board_item">
                     </div>
-                    <button type='submit' class="btn btn-success">Add commutication</button>
+                    <button type='submit' class="btn btn-success">Add message</button>
                 </form>
             @endauth
         @endif
