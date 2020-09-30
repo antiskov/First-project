@@ -5,7 +5,7 @@
         <h3>Answer on answer</h3>
         @if (Route::has('login'))
             @auth
-                <form action="{{ route('answer-on-answer', [$tredId, $boardId, $answerId]) }}" method="post">
+                <form action="{{ route('answer-on-answer', [$threadId, $boardId, $answerId]) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <input class="form-control" type="text" required placeholder="What you intersting?" name="answer_item">

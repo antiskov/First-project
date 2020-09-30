@@ -6,7 +6,7 @@
         <br>
         <h1>{{ $user->name }}</h1>
         @if($user->threads->count() > 0)
-        <h3>treds</h3>
+        <h3>treads</h3>
             @foreach($user->threads as $thread)
                 <div class="alert alert-success">
                     <p>{{ $thread->thread_item }}</p>
@@ -17,7 +17,7 @@
                 <h4>dont have own treds</h4>
             </div>
         @endif
-        <h3>messeges</h3>
+        <h3>messages</h3>
         @foreach($user->boards as $board)
             @if($board)
             <div class="alert alert-warning">

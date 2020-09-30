@@ -21,7 +21,7 @@
                         <a href="{{ route('register')}}">Give an answer</a>
                 @endguest
                 @auth
-                    <a href="{{ route('answer', [$thread->id, $board->id]) }}">Give an answer</a>
+                    <a href="{{ route('new-answer', [$thread->id, $board->id]) }}">Give an answer</a>
                 @endauth
                 @foreach($board->answers as $answer)
                     <div class="alert alert-info">
@@ -38,7 +38,7 @@
         @endforeach
         @if (Route::has('login'))
             @auth
-                <form action="{{ route('add-board', ['topic' => $thread->content_id, 'thread' => $thread->id]) }}" method="post">
+                <form action="{{ route('set-board', ['topic' => $thread->content_id, 'thread' => $thread->id]) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <input class="form-control" type="text" required placeholder="What you intersting?" name="board_item">
@@ -53,9 +53,10 @@
                 <div class="form-group">
                     <input class="form-control" type="text" required placeholder="What you intersting?" name="board_item">
                 </div>
-                <button type='submit' class="btn btn-success">Add commutication</button>
+                <button type='submit' class="btn btn-success">Add message</button>
             </form>
         @endguest
+        <br>
     </div>
     @if ($errors->any())
         <div class="alert alert-danger">

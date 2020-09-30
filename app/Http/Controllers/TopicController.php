@@ -26,7 +26,7 @@ class TopicController extends Controller
      */
     public function setNew()
     {
-        return view('content.topic');
+        return view('set_topic');
     }
 
     /**

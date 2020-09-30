@@ -18,11 +18,11 @@ class AnswerController extends Controller
      * @param Board $board
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function answer(Thread $thread, Board $board)
+    public function get(Thread $thread, Board $board)
     {
         return view('answer ', [
             'boardId' => $board->id,
-            'tredId' => $thread->id
+            'threadId' => $thread->id
         ]);
     }
 
@@ -32,26 +32,26 @@ class AnswerController extends Controller
      * @param StoreAnswer $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addAnswer(Thread $thread, Board $board, StoreAnswer $request)
+    public function set(Thread $thread, Board $board, StoreAnswer $request)
     {
         $answer = new Answer($request->all());
         $answer->user()->associate(auth()->user());
         $answer->board()->associate($board);
         $answer->save();
 
-        return redirect()->route('board', [$tred->id]);
+        return redirect()->route('board', [$thread->id]);
     }
 
-    public function answerOn(Thread $tred, Board $board, Answer $answer)
+    public function getOnAnswer(Thread $thread, Board $board, Answer $answer)
     {
         return view('answer_on_answer ', [
             'boardId' => $board->id,
-            'tredId' => $tred->id,
+            'threadId' => $thread->id,
             'answerId' => $answer->id
         ]);
     }
 
-    public function answerOnAnswer(Thread $tred, Board $board, Answer $answer, StoreAnswer $request)
+    public function setOnAnswer(Thread $thread, Board $board, Answer $answer, StoreAnswer $request)
     {
         $answerOnAnswer = new Answer($request->all());
         $answerOnAnswer->answer_on_answer = $answer->answer_item;
@@ -59,6 +59,6 @@ class AnswerController extends Controller
         $answerOnAnswer->board()->associate($board);
         $answerOnAnswer->save();
 
-        return redirect()->route('board', [$tred->id]);
+        return redirect()->route('board', [$thread->id]);
     }
 }

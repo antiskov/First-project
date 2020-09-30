@@ -6,6 +6,8 @@ use App\Http\Requests\StoreBoard;
 use App\Topic;
 use App\Thread;
 use App\Board;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\HttpRedirectResponse;
 
 /**
  * Class BoardController
@@ -34,14 +36,14 @@ class BoardController extends Controller
     {
         return view('admin.admin_boards', [
             'boards' => $thread->load('boards')->boards,
-            'tred' => $thread,
+            'thread' => $thread,
         ]);
     }
 
     /**
      * @param Thread $tred
      * @param StoreBoard $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function set(Thread $thread, StoreBoard $request)
     {
@@ -55,22 +57,23 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @param Board $board
-     * @return \Illuminate\Http\RedirectResponse
+     * @return HttpRedirectResponse
      * @throws \Exception
      */
     public function delete(Thread $thread, Board $board)
     {
         $board->delete();
 
+        /** @var TYPE_NAME $thread */
         return redirect()->route('board', [$thread->id]);
     }
 
     /**
      * @param Thread $tred
      * @param Board $board
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function forceDelete(Thread $thread, Board $board)
     {
@@ -89,7 +92,7 @@ class BoardController extends Controller
 
         return view('admin.admin_softdeleted', [
             'topics' => Topic::onlyTrashed()->get(),
-            '$threads' => Thread::onlyTrashed()->get(),
+            'threads' => Thread::onlyTrashed()->get(),
             'boards' => Board::onlyTrashed()->get()
         ]);
     }

@@ -5,7 +5,7 @@
     <h3>Topics</h3>
     @foreach($data as $element)
             <div class="alert alert-dark">
-                <a href="{{route('treds', $element->id)}}">{{ $element->topic_item }}</a>
+                <a href="{{route('threads', $element->id)}}">{{ $element->topic_item }}</a>
             @auth
                 @if(auth()->user()->id === $element->user->id)
                     <a href="{{route('delete-topic', [$element->id])}}" class="text-danger float-right">delete</a>

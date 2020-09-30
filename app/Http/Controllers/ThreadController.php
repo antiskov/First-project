@@ -19,7 +19,7 @@ class ThreadController extends Controller
      */
     public function getAll(Topic $topic)
     {
-        return view('content.treds', [
+        return view('thread', [
             'threads' => $topic->load('threads')->threads,
             'topicId' => $topic->id
         ]);
@@ -31,7 +31,7 @@ class ThreadController extends Controller
      */
     public function setNew(Topic $topic)
     {
-        return view('content.new_tred', ['topicId' => $topic->id]);
+        return view('set_thread', ['topicId' => $topic->id]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ThreadController extends Controller
         $thread->topic()->associate($topic);
         $thread->save();
 
-        return redirect()->route('treds', [$topic->id]);
+        return redirect()->route('threads', [$topic->id]);
     }
 
     /**
@@ -55,11 +55,11 @@ class ThreadController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function delete(Topic $topic, Thread $tred)
+    public function delete(Topic $topic, Thread $thread)
     {
-        $tred->delete();
+        $thread->delete();
 
-        return redirect()->route('treds', [$topic->id]);
+        return redirect()->route('threads', [$topic->id]);
     }
 
     /**

@@ -11,13 +11,13 @@ Route::get('home', 'ProfileController@index');
 Route::post('profile_image', 'ProfileController@profileImage')
     ->name('profile-image');
 
-Route::get('/set-new', 'TopicController@setNew')
+Route::get('set', 'TopicController@setNew')
     ->middleware('auth')
     ->name('topic');
 
 Route::post('set', 'TopicController@set')
     ->middleware('auth', 'throttle:4,1')
-    ->name('add-topic');
+    ->name('set-topic');
 
 Route::get('/', 'TopicController@getAll')
     ->name('topics');
@@ -26,18 +26,18 @@ Route::get('{topic}/delete', "TopicController@delete")
     ->name('delete-topic');
 
 Route::get('{topic}/threads', 'ThreadController@getAll')
-    ->name('treds');
+    ->name('threads');
 
-Route::get('{topic}/new-thread', 'ThreadController@setNew')
+Route::get('{topic}/set-thread', 'ThreadController@setNew')
     ->middleware('auth')
-    ->name('new-tred');
+    ->name('new-thread');
 
-Route::post('{topic}/add-thread', 'ThreadController@set')
+Route::post('{topic}/set-thread', 'ThreadController@set')
     ->middleware('auth', 'throttle:4,1')
-    ->name('add-tred');
+    ->name('set-thread');
 
-Route::get('{topic}/{tred}/delete', 'ThreadController@delete')
-    ->name('delete-tred');
+Route::get('{topic}/t/{thread}/delete', 'ThreadController@delete')
+    ->name('delete-thread');
 
 Route::get('{topic}/{tred}/force-delete', 'ThreadController@forceDelete')
     ->middleware('auth', 'is_admin')
@@ -48,9 +48,9 @@ Route::get('{thread}/board', 'BoardController@getAll')
 
 Route::post('{thread}/set-board','BoardController@set')
     ->middleware('auth', 'throttle:4,1')
-    ->name('add-board');
+    ->name('set-board');
 
-Route::get('{thread}/{board}/delete', 'BoardController@delete')
+Route::get('{thread}/b/{board}/delete', 'BoardController@delete')
     ->name('delete-board');
 
 Route::get('{thread}/{board}/force-delete', 'BoardController@forceDelete')
@@ -58,24 +58,22 @@ Route::get('{thread}/{board}/force-delete', 'BoardController@forceDelete')
     ->name('forcedelete-board');
 
 Route::get(
-    '{thread}/{board}/answer',
-    'AnswerController@answer')
-    ->name('answer');
+    '{thread}/{board}/set-answer', 'AnswerController@get')
+    ->name('new-answer');
 
 Route::post(
-    'tred/{tred}/board/{board}/add-answer',
-    'AnswerController@addAnswer')
+    '{thread}/{board}/set-answer', 'AnswerController@set')
     ->middleware('auth', 'throttle:4,1')
-    ->name('add-answer');
+    ->name('set-answer');
 
 Route::get(
-    '{tred}//{board}/{answer}',
-    'AnswerController@answerOn')
+    '{thread}/{board}/{answer}/answer-on-answer',
+    'AnswerController@getOnAnswer')
     ->name('answer-on');
 
 Route::post(
-    '{tred}/{board}/{answer}',
-    'AnswerController@answerOnAnswer')
+    '{thread}/{board}/{answer}/answer-on-answer',
+    'AnswerController@setOnAnswer')
     ->middleware('auth', 'throttle:7,1')
     ->name('answer-on-answer');
 

@@ -22,9 +22,9 @@ class Topic extends Model
 
         static::deleting(function($topics)
         {
-            foreach ($topics->treds()->get() as $tred)
+            foreach ($topics->threads()->get() as $thread)
             {
-                $tred->delete();
+                $thread->delete();
             }
         });
     }

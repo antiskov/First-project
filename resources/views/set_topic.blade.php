@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h3>Answer</h3>
+        <h3>Adding Topic</h3>
         @if (Route::has('login'))
             @auth
-                <form action="{{ route('set-answer', [$threadId, $boardId]) }}" method="post">
+                <form action="{{ route('set-topic') }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <input class="form-control" type="text" required placeholder="What you intersting?" name="answer_item">
+                        <input class="form-control" type="text" placeholder="What you intersting?" required name="topic_item">
                     </div>
-                    <button type='submit' class="btn btn-success">Add qoute</button>
+                    <button type='submit' class="btn btn-success">Add topic</button>
                 </form>
             @endauth
         @endif
