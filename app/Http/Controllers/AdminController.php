@@ -16,7 +16,7 @@ class AdminController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function admin()
+    public function getAll()
     {
         return view('admin.admin_panel', ['topics' => Topic::all()]);
     }

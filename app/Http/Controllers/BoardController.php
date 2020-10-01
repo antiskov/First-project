@@ -73,6 +73,13 @@ class BoardController extends Controller
         return redirect()->route('board', [$thread->id]);
     }
 
+    public function deleteForAdmin(Thread $thread, Board $board)
+    {
+        $board->delete();
+
+        return redirect()->route('admin-board', [$thread->id]);
+    }
+
     /**
      * @param Thread $thread
      * @param Board $board

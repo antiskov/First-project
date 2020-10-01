@@ -5,8 +5,8 @@
         <h3>Communication</h3>
         @foreach($boards as $board)
             <div class="alert alert-warning">
-                <a href="{{route('delete-board', [$board->thread->id, $board->id])}}" class="text-primary float-right">r SoftDelete</a>
-                    <a href="{{route('forcedelete-board', [$board->thread->id, $board->id])}}" class="text-danger float-right">ForceDelete o</a>
+                <a href="{{route('delete-board-admin', [$board->thread->id, $board->id])}}" class="text-primary float-right">r SoftDelete</a>
+                    <a href="{{route('force-delete-board', [$board->thread->id, $board->id])}}" class="text-danger float-right">ForceDelete o</a>
                 <div class='float-rigth'>{{ $board->created_at }}</div>
                 <a href="{{ route('user-page', [$board->user->id]) }}">
                     <img src="{{ asset('/storage/images/'.$board->user->avatar)}}" alt="avatar" width='100' height="100" board='50%'>

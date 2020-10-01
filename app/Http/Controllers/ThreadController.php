@@ -6,7 +6,6 @@ use App\Board;
 use App\Http\Requests\StoreThread;
 use App\Topic;
 use App\Thread;
-use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -71,7 +70,7 @@ class ThreadController extends Controller
      * @param Thread $thread
      * @return RedirectResponse
      */
-    public function deletecForAdmin(Topic $topic, Thread $thread)
+    public function deleteForAdmin(Topic $topic, Thread $thread)
     {
         $thread->delete();
 

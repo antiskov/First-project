@@ -7,7 +7,7 @@
             <div class="alert alert-dark">
                 <a href="{{route('admin-treds', $topic->id)}}">{{ $topic->topic_item }}</a>
                 <a href="{{route('delete-topic-admin', [$topic->id])}}" class="text-primary float-right">r SoftDelete</a>
-                <a href="{{route('forcedelete-topic', [$topic->id])}}" class="text-danger float-right">ForceDelete o</a>
+                <a href="{{route('force-delete-topic', [$topic->id])}}" class="text-danger float-right">ForceDelete o</a>
             </div>
         @endforeach
     </div>
