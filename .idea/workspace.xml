@@ -11,21 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/Board.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_9_21_20__5_11_PM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/[" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/WelcomeMailJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/WelcomeMailJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TopicController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +214,7 @@
       <workItem from="1601461335909" duration="53000" />
       <workItem from="1601465093058" duration="2155000" />
       <workItem from="1601567742278" duration="93000" />
-      <workItem from="1601567837085" duration="3916000" />
+      <workItem from="1601567837085" duration="4642000" />
     </task>
     <servers />
   </component>
@@ -280,22 +271,22 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="502" y="155" width="424" height="491" key="FileChooserDialogImpl/72.27.1294.741@72.27.1294.741" timestamp="1601570424276" />
-    <state width="1248" height="172" key="GridCell.Tab.0.bottom" timestamp="1601570755462">
+    <state width="1248" height="172" key="GridCell.Tab.0.bottom" timestamp="1601571824481">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1248" height="172" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1601570755461" />
-    <state width="1248" height="172" key="GridCell.Tab.0.center" timestamp="1601570755461">
+    <state width="1248" height="172" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1601571824481" />
+    <state width="1248" height="172" key="GridCell.Tab.0.center" timestamp="1601571824480">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1248" height="172" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1601570755461" />
-    <state width="1248" height="172" key="GridCell.Tab.0.left" timestamp="1601570755461">
+    <state width="1248" height="172" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1601571824480" />
+    <state width="1248" height="172" key="GridCell.Tab.0.left" timestamp="1601571824479">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1248" height="172" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1601570755461" />
-    <state width="1248" height="172" key="GridCell.Tab.0.right" timestamp="1601570755461">
+    <state width="1248" height="172" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1601571824479" />
+    <state width="1248" height="172" key="GridCell.Tab.0.right" timestamp="1601571824480">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state width="1248" height="172" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1601570755461" />
+    <state width="1248" height="172" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1601571824480" />
     <state x="196" y="86" width="1035" height="629" key="MergeDialog" timestamp="1601558833762">
       <screen x="72" y="27" width="1294" height="741" />
     </state>

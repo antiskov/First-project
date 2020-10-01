@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBoard;
 use App\Topic;
-use App\Thread;
 use App\Board;
 use Exception;
 use Illuminate\Contracts\Foundation\Application as ApplicationAlias;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Thread;
 
 /**
  * Class BoardController
@@ -18,8 +18,9 @@ use Illuminate\View\View;
  */
 class BoardController extends Controller
 {
+
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @return ApplicationAlias|Factory|View
      */
     public function getAll(Thread $thread)
@@ -44,7 +45,7 @@ class BoardController extends Controller
     }
 
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @param StoreBoard $request
      * @return RedirectResponse
      */
@@ -62,19 +63,18 @@ class BoardController extends Controller
     /**
      * @param Thread $thread
      * @param Board $board
-     * @return HttpRedirectResponse
+     * @return RedirectResponse
      * @throws Exception
      */
     public function delete(Thread $thread, Board $board)
     {
         $board->delete();
 
-        /** @var TYPE_NAME $thread */
         return redirect()->route('board', [$thread->id]);
     }
 
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @param Board $board
      * @return RedirectResponse
      */

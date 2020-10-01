@@ -6,7 +6,10 @@ use App\Board;
 use App\Http\Requests\StoreTopic;
 use App\Topic;
 use App\Thread;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class TopicController
@@ -15,7 +18,7 @@ use Illuminate\Http\RedirectResponse;
 class TopicController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function getAll()
     {
@@ -23,7 +26,7 @@ class TopicController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function setNew()
     {

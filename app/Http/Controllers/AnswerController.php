@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Board;
 use App\Http\Requests\StoreAnswer;
-use App\Thread;
+use Illuminate\Contracts\Foundation\Application as ApplicationAlias;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Thread;
 
 /**
  * Class AnswerController
@@ -13,10 +17,11 @@ use App\Thread;
  */
 class AnswerController extends Controller
 {
+
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @param Board $board
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return ApplicationAlias|Factory|View
      */
     public function get(Thread $thread, Board $board)
     {
@@ -25,12 +30,11 @@ class AnswerController extends Controller
             'threadId' => $thread->id
         ]);
     }
-
     /**
-     * @param Thread $tred
+     * @param Thread $thread
      * @param Board $board
      * @param StoreAnswer $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function set(Thread $thread, Board $board, StoreAnswer $request)
     {
@@ -42,6 +46,12 @@ class AnswerController extends Controller
         return redirect()->route('board', [$thread->id]);
     }
 
+    /**
+     * @param Thread $thread
+     * @param Board $board
+     * @param Answer $answer
+     * @return ApplicationAlias|Factory|View
+     */
     public function getOnAnswer(Thread $thread, Board $board, Answer $answer)
     {
         return view('answer_on_answer ', [
@@ -51,6 +61,13 @@ class AnswerController extends Controller
         ]);
     }
 
+    /**
+     * @param Thread $thread
+     * @param Board $board
+     * @param Answer $answer
+     * @param StoreAnswer $request
+     * @return RedirectResponse
+     */
     public function setOnAnswer(Thread $thread, Board $board, Answer $answer, StoreAnswer $request)
     {
         $answerOnAnswer = new Answer($request->all());

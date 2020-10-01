@@ -6,7 +6,11 @@ use App\Board;
 use App\Http\Requests\StoreThread;
 use App\Topic;
 use App\Thread;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 /**
  * Class ThreadController
@@ -16,7 +20,7 @@ class ThreadController extends Controller
 {
     /**
      * @param Topic $topic
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function getAll(Topic $topic)
     {
@@ -28,7 +32,7 @@ class ThreadController extends Controller
 
     /**
      * @param Topic $topic
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function setNew(Topic $topic)
     {
@@ -52,9 +56,8 @@ class ThreadController extends Controller
 
     /**
      * @param Topic $topic
-     * @param Thread $tred
+     * @param Thread $thread
      * @return RedirectResponse
-     * @throws \Exception
      */
     public function delete(Topic $topic, Thread $thread)
     {
@@ -65,32 +68,31 @@ class ThreadController extends Controller
 
     /**
      * @param Topic $topic
-     * @param Thread $tred
+     * @param Thread $thread
      * @return RedirectResponse
-     * @throws \Exception
      */
-    public function deleteForAdmin(Topic $topic, Thread $tred)
+    public function deletecForAdmin(Topic $topic, Thread $thread)
     {
-        $tred->delete();
+        $thread->delete();
 
         return redirect()->route('admin-treds', [$topic->id]);
     }
 
     /**
      * @param Topic $topic
-     * @param Thread $tred
+     * @param Thread $thread
      * @return RedirectResponse
      */
-    public function forceDelete(Topic $topic, Thread $tred)
+    public function forceDelete(Topic $topic, Thread $thread)
     {
-        $tred->forceDelete();
+        $thread->forceDelete();
 
         return redirect()->route('admin-treds', [$topic->id]);
     }
 
     /**
      * @param Topic $topic
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function getAllForAdmin(Topic $topic)
     {
