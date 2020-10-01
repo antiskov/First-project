@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        WelcomeMailJob::dispatch($user)->onQueue('emails');
+        WelcomeMailJob::dispatch($user)->onQueue('emails')->delay(now()->addMinutes(1));
 
         return $user;
     }
