@@ -19,16 +19,20 @@ class WelcomeMailJob implements ShouldQueue
     /**
      * @var Auth
      */
+    /**
+     * @var User|Auth
+     */
+    private $user;
 
 
     /**
      * Create a new job instance.
      *
-     * @param Auth $user
+     * @param User $user
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-
+        $this->user = $user;
     }
 
     /**
@@ -38,6 +42,6 @@ class WelcomeMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this)->send(new WelcomeMail());
+        Mail::to($this->user)->send(new WelcomeMail());
     }
 }
