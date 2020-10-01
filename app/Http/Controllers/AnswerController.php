@@ -9,7 +9,7 @@ use Illuminate\Contracts\Foundation\Application as ApplicationAlias;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use Thread;
+use App\Thread;
 
 /**
  * Class AnswerController
