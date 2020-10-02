@@ -11,13 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b489908-be77-4575-ac86-39e34cd7fc6c" name="Default Changelist" comment="commit">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThreadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThreadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_boards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_boards.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_panel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_threads.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_threads.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/answer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/answer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/answer_on_answer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/answer_on_answer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/board.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/board.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="e52e74774760f06f12cf325071f9f60919558be3" />
+        <entry key="$PROJECT_DIR$" value="e" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -263,6 +264,10 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="430" y="73" width="558" height="664" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1294.741@72.27.1294.741" timestamp="1601228330705" />
+    <state x="452" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601645173461">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="452" y="146" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1294.741@72.27.1294.741" timestamp="1601645173461" />
     <state x="452" y="154" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601563033225">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
@@ -328,14 +333,18 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="444" y="91" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog/72.27.1294.741@72.27.1294.741" timestamp="1601558824878" />
+    <state x="430" y="170" width="568" height="462" key="refactoring.ChangeSignatureDialog" timestamp="1601648206963">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="430" y="170" width="568" height="462" key="refactoring.ChangeSignatureDialog/72.27.1294.741@72.27.1294.741" timestamp="1601648206963" />
     <state x="383" y="174" width="672" height="677" key="run.anything.popup" timestamp="1601570497657">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="383" y="174" width="672" height="677" key="run.anything.popup/72.27.1294.741@72.27.1294.741" timestamp="1601570497657" />
-    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup" timestamp="1601567789203">
+    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup" timestamp="1601646262024">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
-    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1601567789203" />
+    <state x="371" y="86" width="672" height="680" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1601646262024" />
     <state x="371" y="88" width="672" height="678" key="search.everywhere.popup/72.29.1294.739@72.29.1294.739" timestamp="1600712494696" />
     <state x="444" y="311" width="540" height="179" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1601106984579">
       <screen x="72" y="27" width="1294" height="741" />

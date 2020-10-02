@@ -8,7 +8,7 @@
                 <form action="{{ route('set-answer', [$threadId, $boardId]) }}" method="post">
                     @csrf
                     <div class="form-group">
-                        <input class="form-control" type="text" required placeholder="What you intersting?" name="answer_item">
+                        <textarea class="form-control" name="answer_item"></textarea>
                     </div>
                     <button type='submit' class="btn btn-success">Add qoute</button>
                 </form>

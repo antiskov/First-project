@@ -1,9 +1,13 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
+use App\Board;
+use App\Topic;
+use App\Thread;
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;
 
 /*
@@ -16,6 +20,15 @@ use Illuminate\Support\Str;
 | model instances for testing / seeding your application's database.
 |
 */
+$factory->define(User::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'remember_token' => Str::random(10),
+    ];
+});
 
 $factory->define(User::class, function (Faker $faker) {
     return [
@@ -24,5 +37,25 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->define(Topic::class, function (Faker $faker) {
+    return [
+        'topic_item' => $faker->text
+    ];
+});
+
+$factory->define(Thread::class, function (Faker $faker) {
+    return [
+        'thread_item' => $faker->text,
+        'topic_id' => 1,
+    ];
+});
+
+$factory->define(Board::class, function (Faker $faker) {
+    return [
+        'board_item' => $faker->text,
+        'thread_id' => 1,
     ];
 });
