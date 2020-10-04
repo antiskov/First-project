@@ -15,7 +15,7 @@
         @endforeach
         @if (Route::has('login'))
             @auth
-                <a href="{{ route('new-thread', $topicId) }}">New tred</a>
+                <a href="{{ route('new-thread', $topicId) }}">New thread</a>
     @endauth
     @endif
 @endsection
