@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3>Treds</h3>
+        <h3>Threads</h3>
         @foreach($threads as $thread)
             <div class="alert alert-success">
                 <a href="{{ route('board', [$thread->id]) }}">{{ $thread->thread_item }}</a>

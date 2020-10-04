@@ -23,12 +23,15 @@ class ThreadController extends Controller
      */
     public function getAll(Topic $topic)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 88a7668... done
         return view('thread', [
             'threads' => $topic->load('threads')->threads,
             'topicId' => $topic->id
         ]);
     }
-
     /**
      * @param Topic $topic
      * @return Application|Factory|View
